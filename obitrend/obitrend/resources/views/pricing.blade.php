@@ -1091,7 +1091,7 @@
         <div class="page-content">
             <!-- BEGIN PAGE HEADER-->
             <!-- BEGIN THEME PANEL -->
-            <div class="theme-panel">
+            <!-- <div class="theme-panel">
                 <div class="toggler tooltips" data-container="body" data-placement="left" data-html="true" data-original-title="Click to open advance theme customizer panel">
                     <i class="icon-settings"></i>
                 </div>
@@ -1166,7 +1166,7 @@
                         </select>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- END THEME PANEL -->
             <h1 class="page-title"> Pricing
                 <!-- <small>pricing table samples</small> -->
@@ -1175,7 +1175,7 @@
                 <ul class="page-breadcrumb">
                     <li>
                         <i class="icon-home"></i>
-                        <a href="index.html">Home</a>
+                        <a href="{{ route('welcome') }}">Home</a>
                         <i class="fa fa-angle-right"></i>
                     </li>
                     <li>
@@ -1184,10 +1184,10 @@
                 </ul>
                 <div class="page-toolbar">
                     <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true"> Actions
+                        <!-- <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true"> Actions
                             <i class="fa fa-angle-down"></i>
-                        </button>
-                        <ul class="dropdown-menu pull-right" role="menu">
+                        </button> -->
+                        <!-- <ul class="dropdown-menu pull-right" role="menu">
                             <li>
                                 <a href="#">
                                     <i class="icon-bell"></i> Action</a>
@@ -1205,7 +1205,7 @@
                                 <a href="#">
                                     <i class="icon-bag"></i> Separated link</a>
                             </li>
-                        </ul>
+                        </ul> -->
                     </div>
                 </div>
             </div>
@@ -1922,7 +1922,7 @@
                                 <img class="media-object" src="../assets/layouts/layout/img/avatar9.jpg" alt="...">
                                 <div class="media-body">
                                     <h4 class="media-heading">Deon Portalatin</h4>
-                                    <div class="media-heading-sub"> CFO, H&D LTD </div>
+                                    <div class="media-heading-sub"> CFO, HD LTD </div>
                                 </div>
                             </li>
                             <li class="media">
@@ -2366,16 +2366,16 @@
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
 <div class="page-footer">
-    <div class="page-footer-inner"> 2016 &copy; Metronic Theme By
-        <a target="_blank" href="http://keenthemes.com">Keenthemes</a> &nbsp;|&nbsp;
-        <a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" title="Purchase Metronic just for 27$ and get lifetime updates for free" target="_blank">Purchase Metronic!</a>
+    <div class="page-footer-inner"> 2017 &copy; Obitrend international
+
+
         <div class="scroll-to-top">
             <i class="icon-arrow-up"></i>
         </div>
     </div>
     <!-- END FOOTER -->
     <!-- BEGIN QUICK NAV -->
-    <nav class="quick-nav">
+    <!-- <nav class="quick-nav">
         <a class="quick-nav-trigger" href="#0">
             <span aria-hidden="true"></span>
         </a>
@@ -2406,7 +2406,7 @@
             </li>
         </ul>
         <span aria-hidden="true" class="quick-nav-bg"></span>
-    </nav>
+    </nav> -->
     <div class="quick-nav-overlay"></div>
     <!-- END QUICK NAV -->
     <!--[if lt IE 9]>

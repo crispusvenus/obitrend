@@ -22,8 +22,8 @@ class CreateUsersTable extends Migration
             $table->integer('access_level');
             $table->string('slug');
             $table->string('avatar');
-            $table->string('country')->nullable();;
-            $table->integer('gender');
+            $table->string('my_country')->nullable();
+             $table->integer('gender');
             //to signal if account is active or not
             $table->integer('account_status');
             $table->string('password');

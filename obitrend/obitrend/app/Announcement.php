@@ -33,7 +33,10 @@ class Announcement extends Model
     {
         return $this->hasMany(Tribute::class,'tributes');
     }
-
+    public function comment()
+    {
+        return $this->hasMany(Comment::class,'tributes');
+    }
 
 
 }

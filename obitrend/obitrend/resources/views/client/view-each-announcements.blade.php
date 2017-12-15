@@ -1090,82 +1090,7 @@
         <div class="page-content">
             <!-- BEGIN PAGE HEADER-->
             <!-- BEGIN THEME PANEL -->
-            <!-- <div class="theme-panel">
-                <div class="toggler tooltips" data-container="body" data-placement="left" data-html="true" data-original-title="Click to open advance theme customizer panel">
-                    <i class="icon-settings"></i>
-                </div>
-                <div class="toggler-close">
-                    <i class="icon-close"></i>
-                </div>
-                <div class="theme-options">
-                    <div class="theme-option theme-colors clearfix">
-                        <span> THEME COLOR </span>
-                        <ul>
-                            <li class="color-default current tooltips" data-style="default" data-container="body" data-original-title="Default"> </li>
-                            <li class="color-grey tooltips" data-style="grey" data-container="body" data-original-title="Grey"> </li>
-                            <li class="color-blue tooltips" data-style="blue" data-container="body" data-original-title="Blue"> </li>
-                            <li class="color-dark tooltips" data-style="dark" data-container="body" data-original-title="Dark"> </li>
-                            <li class="color-light tooltips" data-style="light" data-container="body" data-original-title="Light"> </li>
-                        </ul>
-                    </div>
-                    <div class="theme-option">
-                        <span> Layout </span>
-                        <select class="layout-option form-control input-small">
-                            <option value="fluid" selected="selected">Fluid</option>
-                            <option value="boxed">Boxed</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Header </span>
-                        <select class="page-header-option form-control input-small">
-                            <option value="fixed" selected="selected">Fixed</option>
-                            <option value="default">Default</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Top Dropdown</span>
-                        <select class="page-header-top-dropdown-style-option form-control input-small">
-                            <option value="light" selected="selected">Light</option>
-                            <option value="dark">Dark</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Sidebar Mode</span>
-                        <select class="sidebar-option form-control input-small">
-                            <option value="fixed">Fixed</option>
-                            <option value="default" selected="selected">Default</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Sidebar Style</span>
-                        <select class="sidebar-style-option form-control input-small">
-                            <option value="default" selected="selected">Default</option>
-                            <option value="compact">Compact</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Sidebar Menu </span>
-                        <select class="sidebar-menu-option form-control input-small">
-                            <option value="accordion" selected="selected">Accordion</option>
-                            <option value="hover">Hover</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Sidebar Position </span>
-                        <select class="sidebar-pos-option form-control input-small">
-                            <option value="left" selected="selected">Left</option>
-                            <option value="right">Right</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Footer </span>
-                        <select class="page-footer-option form-control input-small">
-                            <option value="fixed">Fixed</option>
-                            <option value="default" selected="selected">Default</option>
-                        </select>
-                    </div>
-                </div>
-            </div> -->
+          
             @if(Session::has('message'))
                 <div class="alert alert-success"><em> {!! session('message') !!}</em></div>
             @endif
@@ -1204,10 +1129,13 @@
                                   <a href="javascript:;">
                                       <i class="fa fa-twitter"></i> Twitter</a>
                               </li>
+                              @if(($request[0]->type_of_announcement)=="Deathannouncement")
                               <li class="divider"> </li>
+
                               <li>
-                                  <a href="javascript:;"> Download euology </a>
+                                  <a href="{{Storage::url($request[0]->file_path)}}" download="{{Storage::url($request[0]->file_path)}}"> Download euology </a>
                               </li>
+                               @endif
                           <!-- </ul> -->
                             <!-- <li>
                                 <a href="#">
@@ -1244,8 +1172,9 @@
                             </div>
                             <div class="blog-single-img">
                                 <!-- <img src="{{  $request[0]->file_path }}" />  -->
+  <!-- <img width="70%" src="{{Storage::url($request[0]->image_path)}}" /></div> -->
+                                <img width="70%" src="{{Storage::url($request[0]->image_thumb)}}" /></div>
 
-                                <img width="70%" src="{{Storage::url($request[0]->file_path)}}" /></div>
 
                             <div class="blog-single-desc">
                                 <p>{{ $request[0]->description }}</p>
@@ -1270,7 +1199,7 @@
 
                         </div>
                     </div>
-
+  @if(($request[0]->type_of_announcement)=="Deathannouncement")
               <div class="col-lg-5">
                 <!-- <div class="col-md-6"> -->
                     <!-- BEGIN PORTLET -->
@@ -1289,6 +1218,8 @@
                                 </div>
                             </div> -->
                         </div>
+
+
                         <div class="portlet-body">
                             <div class="scroller" style="height: 305px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
                                 <div class="general-item-list">
@@ -1296,106 +1227,33 @@
                                   <div class="note note-success"><h3>No tributes</h3>  </div>
 
                                      @else
+                                     <?php
+ 														for ($i = 0; $i < count($tribute); ++$i) { ?>
 
-                                  <!-- @foreach ($tribute as $row) -->
-                                  <?php
-														for ($i = 0; $i < count($tribute); ++$i) { ?>
+
                               <div class="item">
                                   <div class="item-head">
                                       <div class="item-details">
-                                          <img class="item-pic" src="{{asset('layout_assets/pages/media/users/avatar12.png')}}">
-                                          <a href="" class="item-name primary-link">{{ $tribute[$i]->user->first_name }}   {{ $tribute[0]->user->other_names }}</a>
+                                           <img class="item-pic" src="{{Storage::url( $tribute[$i]->user->avatar)}}">
+                                          <!-- <img class="item-pic" src="{{asset('layout_assets/pages/media/users/avatar12.png')}}"> -->
+                                          <a href="" class="item-name primary-link">{{ $tribute[$i]->user->first_name}}  {{ $tribute[$i]->user->other_names}}</a>
                                           <span class="item-label">1 day ago</span>
                                       </div>
                                       <span class="item-status">
                                           <!-- <span class="badge badge-empty badge-success"></span> </span> -->
                                   </div>
-                                  <div class="item-body">{{ $tribute[$i]->comment}}{{ $tribute[$i]->id}}</div>
+                                  <div class="item-body">{{ $tribute[$i]->comment}} </div>
                               </div>
 
 
-											                   <?php }?>
 
 
+                                       <?php }?>
 
-
-
-                                    <!-- @endforeach -->
 
 
                                    @endif
-                                    <!-- <div class="item">
-                                        <div class="item-head">
-                                            <div class="item-details">
-                                                <img class="item-pic" src="../assets/pages/media/users/avatar3.jpg">
-                                                <a href="" class="item-name primary-link">Mark</a>
-                                                <span class="item-label">5 hrs ago</span>
-                                            </div>
-                                            <span class="item-status">
-                                                <span class="badge badge-empty badge-warning"></span> Pending</span>
-                                        </div>
-                                        <div class="item-body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat tincidunt ut laoreet. </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-head">
-                                            <div class="item-details">
-                                                <img class="item-pic" src="../assets/pages/media/users/avatar6.jpg">
-                                                <a href="" class="item-name primary-link">Nick Larson</a>
-                                                <span class="item-label">8 hrs ago</span>
-                                            </div>
-                                            <span class="item-status">
-                                                <span class="badge badge-empty badge-primary"></span> Closed</span>
-                                        </div>
-                                        <div class="item-body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh. </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-head">
-                                            <div class="item-details">
-                                                <img class="item-pic" src="../assets/pages/media/users/avatar7.jpg">
-                                                <a href="" class="item-name primary-link">Nick Larson</a>
-                                                <span class="item-label">12 hrs ago</span>
-                                            </div>
-                                            <span class="item-status">
-                                                <span class="badge badge-empty badge-danger"></span> Pending</span>
-                                        </div>
-                                        <div class="item-body"> Consectetuer adipiscing elit Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-head">
-                                            <div class="item-details">
-                                                <img class="item-pic" src="../assets/pages/media/users/avatar9.jpg">
-                                                <a href="" class="item-name primary-link">Richard Stone</a>
-                                                <span class="item-label">2 days ago</span>
-                                            </div>
-                                            <span class="item-status">
-                                                <span class="badge badge-empty badge-danger"></span> Open</span>
-                                        </div>
-                                        <div class="item-body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, ut laoreet dolore magna aliquam erat volutpat. </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-head">
-                                            <div class="item-details">
-                                                <img class="item-pic" src="../assets/pages/media/users/avatar8.jpg">
-                                                <a href="" class="item-name primary-link">Dan</a>
-                                                <span class="item-label">3 days ago</span>
-                                            </div>
-                                            <span class="item-status">
-                                                <span class="badge badge-empty badge-warning"></span> Pending</span>
-                                        </div>
-                                        <div class="item-body"> Lorem ipsum dolor sit amet, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-head">
-                                            <div class="item-details">
-                                                <img class="item-pic" src="../assets/pages/media/users/avatar2.jpg">
-                                                <a href="" class="item-name primary-link">Larry</a>
-                                                <span class="item-label">4 hrs ago</span>
-                                            </div>
-                                            <span class="item-status">
-                                                <span class="badge badge-empty badge-success"></span> Open</span>
-                                        </div>
-                                        <div class="item-body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </div>
-                                    </div> -->
+
                                 </div>
                             </div>
 <form  action="{{ route('create.comment')}}" method="POST">
@@ -1414,10 +1272,90 @@
 
 
                         </div>
+
                     </div>
 
                 </div>
-                
+                @else
+                <div class="col-lg-5">
+                  <!-- <div class="col-md-6"> -->
+                      <!-- BEGIN PORTLET -->
+                      <div class="portlet light ">
+                          <div class="portlet-title">
+                              <div class="caption caption-md">
+                                  <i class="icon-bar-chart theme-font hide"></i>
+                                  <span class="caption-subject font-blue-madison bold uppercase">Comment</span>
+                                  <!-- <span class="caption-helper">45 pending</span> -->
+                              </div>
+                              <!-- <div class="inputs">
+                                  <div class="portlet-input input-inline input-small ">
+                                      <div class="input-icon right">
+                                          <i class="icon-magnifier"></i>
+                                          <input type="text" class="form-control form-control-solid" placeholder="search..."> </div>
+                                  </div>
+                              </div> -->
+                          </div>
+
+
+                          <div class="portlet-body">
+                              <div class="scroller" style="height: 305px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
+                                  <div class="general-item-list">
+                                    @if(count($comment)==0)
+                                    <div class="note note-success"><h3>No comments</h3>  </div>
+
+                                       @else
+                                       <?php
+                              for ($i = 0; $i < count($comment); ++$i) { ?>
+
+
+                                <div class="item">
+                                    <div class="item-head">
+                                        <div class="item-details">
+                                             <img class="item-pic" src="{{Storage::url( $comment[$i]->user->avatar)}}">
+                                            <!-- <img class="item-pic" src="{{asset('layout_assets/pages/media/users/avatar12.png')}}"> -->
+                                            <a href="" class="item-name primary-link">{{$comment[$i]->user->first_name}} {{$comment[$i]->user->other_names}}</a>
+                                            <span class="item-label">1 day ago</span>
+                                        </div>
+                                        <span class="item-status">
+                                            <!-- <span class="badge badge-empty badge-success"></span> </span> -->
+                                    </div>
+                                    <div class="item-body">{{$comment[$i]->comment}}</div>
+                                </div>
+
+
+
+
+                                         <?php }?>
+
+
+
+                                     @endif
+
+                                  </div>
+                              </div>
+  <form  action="{{ route('create.comments')}}" method="POST">
+      {{ csrf_field() }}
+
+                              <div class="form-group form-md-line-input form-md-floating-label has-success">
+
+  <input type="text" class="form-control" name="comment" id="form_control_1">
+  <label for="form_control_1">comment goes here</label>
+  </div>
+
+   <input type="hidden" name="announcement_id" value="{{$request[0]->id}}">
+   <button class="btn green-haze" type="submit">post comment</button>
+     </form>
+
+
+
+                          </div>
+
+                      </div>
+
+                  </div>
+
+
+                   @endif
             </div>
         </div>
         <!-- END CONTENT BODY -->

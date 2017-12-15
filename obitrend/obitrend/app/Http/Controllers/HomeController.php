@@ -32,6 +32,7 @@ class HomeController extends Controller
 
     public function index()
     {
+
               //fetches  all approved requests based on type
           $announcements = DB::table('announcements')->where('is_featured',1)
           ->where('type_of_announcement','Deathannouncement')
@@ -68,6 +69,51 @@ class HomeController extends Controller
 
     //    return count($all['public']);
     }
+
+        public function my_country()
+        {
+
+             $user = Auth::user()->id;
+             $me = DB::table('users')->where('id',$user)
+             ->get();
+             $country = $me[0]->my_country;
+
+                  //fetches  all approved requests based on type
+              $announcements = DB::table('announcements')->where('is_featured',1)
+              ->where('type_of_announcement','Deathannouncement')->where('country',$country)
+              ->get();
+              $missing = DB::table('announcements')->where('is_featured',1)
+              ->where('type_of_announcement','Missingperson')->where('country',$country)
+              ->get();
+              $public = DB::table('announcements')->where('is_featured',1)
+              ->where('type_of_announcement','PublicNotice')->where('country',$country)
+              ->get();
+              $Anniversaries = DB::table('announcements')->where('is_featured',1)
+              ->where('type_of_announcement','Anniversaries')->where('country',$country)
+              ->get();
+
+
+              $Anniversaries =  array('anniversaries' => $Anniversaries);
+              $announcements = array('announcements' => $announcements );
+              $missing = array('missing' => $missing);
+              $public =  array('public' => $public);
+
+              //merge all requests
+              $all = array_merge($public,$Anniversaries,$announcements,$missing);
+
+              //get all notifications.dummy
+              $requests = Notification::all();
+              //  $file = Storage::disk('public')->get($filename);
+
+                 return view('client.view-announcements',
+                 array('all' => $all ),
+
+                 array('requests' =>$requests)
+
+               );
+
+        }
+
 
 
 }

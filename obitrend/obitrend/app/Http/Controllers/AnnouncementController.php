@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use  Auth;
 use App\Announcement;
 use App\Notification;
+use App\Comment;
 use App\Tribute;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Storage;
 use InterImage;
 use Intervention\Image\ImageManagerStatic as Image;
 use Session;
+// use PDF;
 
 
 
@@ -56,11 +58,14 @@ class AnnouncementController extends Controller
 //   'description' => 'max:255',
 //    'image_path' => 'required|image',
 // ]);
-      if ($request->hasFile('file'))
+      if ($request->hasFile('image_path'))
       {
-         $filename = $request->file->getClientOriginalName();
-          $path = $request->file->storeAs('public/id',$filename);
-          $file = $request->file_path->storeAs('public/upload',$filename);
+         // $filename = $request->file->getClientOriginalName();
+         // $imagename = $request->image_path->getClientOriginalName();
+         // $thumbname = $request->image_thumb->getClientOriginalName();
+          $path = $request->image_path->storeAs('public/id');
+          $file = $request->image_thumb->storeAs('public/upload');
+          $download = $request->file->storeAs('public/downloads');
       //creates announcements
 
     //  $path = Storage::disk('public')->putfile('id',$request->file);
@@ -68,11 +73,11 @@ class AnnouncementController extends Controller
                'content'=>Input::get('content'),
                'user_id'=>Auth::user()->id,
                'type_of_announcement'=>Input::get('type_of_announcement'),
-               'image_thumb'=>'null',
+               'image_thumb'=>$file,
                'image_path'=>$path,
                'description'=>Input::get('description'),
                'country'=>Input::get('country'),
-               'file_path'=>$file,
+               'file_path'=>$download,
                'location'=>Input::get('location'),
                'payment'=>Input::get('payment'),
                'is_featured'=>0,
@@ -83,16 +88,17 @@ class AnnouncementController extends Controller
              //if successful redirect to dashboard
          return redirect()->route('client.index');
       }else{
+        Session::flash('fail','please upload a picture of your id');
+        return redirect()->back();
 
       }
-          return redirect()->route('create.announcement');
-
 
   }
 
+//creates tributes
   public function create_comment(request $request )
   {
- $id = Input::get('announcement_id');
+     $id = Input::get('announcement_id');
       //creates tribute
      Tribute::create(array(
                'announcement_id'=>$id,
@@ -102,23 +108,35 @@ class AnnouncementController extends Controller
              ));
              //if successful redirect to dashboard
     return redirect()->back()->with('message','Tribute posted successfully');
-      //  return Redirect::to('announcement/each/{$id}')->with('message','User blocked successfully');
- // return $id;
 
+  }
+
+  //creates comments
+  public function create_comments(request $request )
+  {
+     $id = Input::get('announcement_id');
+      //creates tribute
+     Comment::create(array(
+               'announcement_id'=>$id,
+               'user_id'=>Auth::user()->id,
+               'comment'=>Input::get('comment')
+
+             ));
+             //if successful redirect to dashboard
+    return redirect()->back()->with('message','comment posted successfully');
 
   }
 
   public function get_each_announcements($id)
   {
-    //fetches  all approved requests based on type
+    //gets each announcement
       $request =  Announcement::with('user')->where('id',$id)->get();
       $tribute =  Tribute::with('user')->where('announcement_id',$id)->get();
+      $comment =  Comment::with('user')->where('announcement_id',$id)->get();
 
      $requests = Notification::all();
-
- return view('client.view-each-announcements',['requests' => $requests, 'request' => $request ,'tribute' => $tribute  ]);
-    // return view('client.view-each-announcements',array('tribute' =>$tribute ),array('requests' => $requests),array('request' =>$request));
-
+//return $comment[0];
+ return view('client.view-each-announcements',['requests' => $requests, 'request' => $request ,'tribute' => $tribute  ,'comment' =>$comment ]);
 
   }
 
@@ -134,23 +152,48 @@ class AnnouncementController extends Controller
 
     }
 
-    // find function
-      public function show($id)
-      {
-        return Announcement::find($id);
-      //  return response()->download(public_path('file_path/from_public_dir.pdf'));
-      }
+
 /* Fetch the artwork using the id */
-      public function artwork($id, Request $request){
-// $announcements = DB::table('announcements')->where('is_featured',1)->get();
-// $announcement = array('request' => $announcements );
- // $announcements= Announcement::with('user')->where('is_featured',1)->get();
-    $image_path = 'public/upload/'.$id;
+      public function upload($id, Request $request){
+
+      $image_path = 'public/upload/'.$id;
 
       $image = Storage::get($image_path);
 
       /* Return the file */
        return Image::make($image)->response();
-      //return $announcements;
+
   }
+  /* Fetch the artwork using the id */
+        public function id($id, Request $request){
+
+        $image_path = 'public/id/'.$id;
+        //$image_path = 'public/defaults/avatars/'.$id;
+
+        $image = Storage::get($image_path);
+
+        /* Return the file */
+         return Image::make($image)->response();
+
+    }
+    /* Fetch the artwork using the id */
+          public function avatar($id, Request $request){
+
+
+        $image_path = 'public/defaults/avatars/'.$id;
+
+          $image = Storage::get($image_path);
+
+          /* Return the file */
+           return Image::make($image)->response();
+
+      }
+      /* Fetch the artwork using the id */
+            public function download(){
+
+            // $pdf = PDF::loadView('client.index'); $requests = Notification::all();
+
+             return 0;
+
+        }
 }

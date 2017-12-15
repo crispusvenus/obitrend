@@ -29,6 +29,9 @@ class LandingController extends Controller
   {
       return view('pricing');
   }
-
+  public function welcome()
+  {
+      return view('welcome');
+  }
 
 }

@@ -1089,82 +1089,7 @@
         <div class="page-content">
             <!-- BEGIN PAGE HEADER-->
             <!-- BEGIN THEME PANEL -->
-            <div class="theme-panel">
-                <div class="toggler tooltips" data-container="body" data-placement="left" data-html="true" data-original-title="Click to open advance theme customizer panel">
-                    <i class="icon-settings"></i>
-                </div>
-                <div class="toggler-close">
-                    <i class="icon-close"></i>
-                </div>
-                <div class="theme-options">
-                    <div class="theme-option theme-colors clearfix">
-                        <span> THEME COLOR </span>
-                        <ul>
-                            <li class="color-default current tooltips" data-style="default" data-container="body" data-original-title="Default"> </li>
-                            <li class="color-grey tooltips" data-style="grey" data-container="body" data-original-title="Grey"> </li>
-                            <li class="color-blue tooltips" data-style="blue" data-container="body" data-original-title="Blue"> </li>
-                            <li class="color-dark tooltips" data-style="dark" data-container="body" data-original-title="Dark"> </li>
-                            <li class="color-light tooltips" data-style="light" data-container="body" data-original-title="Light"> </li>
-                        </ul>
-                    </div>
-                    <div class="theme-option">
-                        <span> Layout </span>
-                        <select class="layout-option form-control input-small">
-                            <option value="fluid" selected="selected">Fluid</option>
-                            <option value="boxed">Boxed</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Header </span>
-                        <select class="page-header-option form-control input-small">
-                            <option value="fixed" selected="selected">Fixed</option>
-                            <option value="default">Default</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Top Dropdown</span>
-                        <select class="page-header-top-dropdown-style-option form-control input-small">
-                            <option value="light" selected="selected">Light</option>
-                            <option value="dark">Dark</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Sidebar Mode</span>
-                        <select class="sidebar-option form-control input-small">
-                            <option value="fixed">Fixed</option>
-                            <option value="default" selected="selected">Default</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Sidebar Style</span>
-                        <select class="sidebar-style-option form-control input-small">
-                            <option value="default" selected="selected">Default</option>
-                            <option value="compact">Compact</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Sidebar Menu </span>
-                        <select class="sidebar-menu-option form-control input-small">
-                            <option value="accordion" selected="selected">Accordion</option>
-                            <option value="hover">Hover</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Sidebar Position </span>
-                        <select class="sidebar-pos-option form-control input-small">
-                            <option value="left" selected="selected">Left</option>
-                            <option value="right">Right</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Footer </span>
-                        <select class="page-footer-option form-control input-small">
-                            <option value="fixed">Fixed</option>
-                            <option value="default" selected="selected">Default</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
+
             <!-- END THEME PANEL -->
             <h1 class="page-title">Approve request
 
@@ -1178,7 +1103,7 @@
                         <div class="portlet light profile-sidebar-portlet ">
                             <!-- SIDEBAR USERPIC -->
                             <div class="profile-userpic">
-                                <img src="{{asset('layout_assets/pages/media/users/avatar12.png')}}"   class="img-responsive" alt=""> </div>
+                                <img src="{{Storage::url( $requests[0]->user->avatar)}}"   class="img-responsive" alt=""> </div>
                             <!-- END SIDEBAR USERPIC -->
                             <!-- SIDEBAR USER TITLE -->
 
@@ -1190,14 +1115,34 @@
                             </div>
                             <!-- END SIDEBAR USER TITLE -->
                             <!-- SIDEBAR BUTTONS -->
-                            <div class="profile-userbuttons">
-                              <a  href="{{ route('admin.approve.request',$requests[0]->id) }}" class="btn btn-circle green btn-sm"><span class="hidden-xs"> Approve </span>  </a>
+                            @if(($requests[0]->status==1)&&($requests[0]->is_featured==1))
 
-                              <a  href="{{ route('admin.decline.request',$requests[0]->id) }}" class="btn btn-circle red btn-sm"><span class="hidden-xs"> Decline </span>  </a>
+
+
+                            <div class="profile-userbuttons">
+                              <a  href="{{ route('admin.view.requests') }}" class="btn btn-circle green btn-sm"><span class="hidden-xs">Back</span>  </a>
+
+                              <a  href="{{ route('admin.decline.request',$requests[0]->id) }}" class="btn btn-circle red btn-sm"><span class="hidden-xs"> DECLINE </span>  </a>
 
                                 <!-- <button type="button" class="btn btn-circle green btn-sm">Approve</button> -->
                                 <!-- <button type="button" class="btn btn-circle red btn-sm">Decline</button> -->
                             </div>
+                              @elseif(($requests[0]->status==1)&&($requests[0]->is_featured==0))
+                              <div class="profile-userbuttons">
+                                <a  href="{{ route('admin.approve.request',$requests[0]->id) }}" class="btn btn-circle green btn-sm"><span class="hidden-xs"> APPROVE</span>  </a>
+
+                                <a  href="{{ route('admin.view.requests') }}" class="btn btn-circle green btn-sm"><span class="hidden-xs"> back </span>  </a>
+
+                                  <!-- <button type="button" class="btn btn-circle green btn-sm">Approve</button> -->
+                                  <!-- <button type="button" class="btn btn-circle red btn-sm">Decline</button> -->
+                              </div>
+                            @else
+                            <div class="profile-userbuttons">
+                              <a  href="{{ route('admin.approve.request',$requests[0]->id) }}" class="btn btn-circle green btn-sm"><span class="hidden-xs"> Approve </span>  </a>
+
+                              <a  href="{{ route('admin.decline.request',$requests[0]->id) }}" class="btn btn-circle red btn-sm"><span class="hidden-xs"> Decline </span>  </a>
+                               </div>
+                        @endif
                             <!-- END SIDEBAR BUTTONS -->
                             <!-- SIDEBAR MENU -->
                             <div class="profile-usermenu">
@@ -1380,7 +1325,7 @@
                                             <div class="tab-pane" id="tab_1_2">
                                                 <div id="accordion2" class="panel-group">
                                                   <div class="blog-single-img">
-                                        
+
 
                                                       <img width="70%" src="{{Storage::url($requests[0]->image_path)}}" /></div>
                                                 <!-- <div class="panel panel-danger">

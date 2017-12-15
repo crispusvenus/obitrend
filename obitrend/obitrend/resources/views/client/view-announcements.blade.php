@@ -1089,89 +1089,14 @@
         <div class="page-content">
             <!-- BEGIN PAGE HEADER-->
             <!-- BEGIN THEME PANEL -->
-            <!-- <div class="theme-panel">
-                <div class="toggler tooltips" data-container="body" data-placement="left" data-html="true" data-original-title="Click to open advance theme customizer panel">
-                    <i class="icon-settings"></i>
-                </div>
-                <div class="toggler-close">
-                    <i class="icon-close"></i>
-                </div>
-                <div class="theme-options">
-                    <div class="theme-option theme-colors clearfix">
-                        <span> THEME COLOR </span>
-                        <ul>
-                            <li class="color-default current tooltips" data-style="default" data-container="body" data-original-title="Default"> </li>
-                            <li class="color-grey tooltips" data-style="grey" data-container="body" data-original-title="Grey"> </li>
-                            <li class="color-blue tooltips" data-style="blue" data-container="body" data-original-title="Blue"> </li>
-                            <li class="color-dark tooltips" data-style="dark" data-container="body" data-original-title="Dark"> </li>
-                            <li class="color-light tooltips" data-style="light" data-container="body" data-original-title="Light"> </li>
-                        </ul>
-                    </div>
-                    <div class="theme-option">
-                        <span> Layout </span>
-                        <select class="layout-option form-control input-small">
-                            <option value="fluid" selected="selected">Fluid</option>
-                            <option value="boxed">Boxed</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Header </span>
-                        <select class="page-header-option form-control input-small">
-                            <option value="fixed" selected="selected">Fixed</option>
-                            <option value="default">Default</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Top Dropdown</span>
-                        <select class="page-header-top-dropdown-style-option form-control input-small">
-                            <option value="light" selected="selected">Light</option>
-                            <option value="dark">Dark</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Sidebar Mode</span>
-                        <select class="sidebar-option form-control input-small">
-                            <option value="fixed">Fixed</option>
-                            <option value="default" selected="selected">Default</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Sidebar Style</span>
-                        <select class="sidebar-style-option form-control input-small">
-                            <option value="default" selected="selected">Default</option>
-                            <option value="compact">Compact</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Sidebar Menu </span>
-                        <select class="sidebar-menu-option form-control input-small">
-                            <option value="accordion" selected="selected">Accordion</option>
-                            <option value="hover">Hover</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Sidebar Position </span>
-                        <select class="sidebar-pos-option form-control input-small">
-                            <option value="left" selected="selected">Left</option>
-                            <option value="right">Right</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Footer </span>
-                        <select class="page-footer-option form-control input-small">
-                            <option value="fixed">Fixed</option>
-                            <option value="default" selected="selected">Default</option>
-                        </select>
-                    </div>
-                </div>
-            </div> -->
+          
             <!-- END THEME PANEL -->
 
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
                         <i class="icon-home"></i>
-                        <a href="index.html">Home</a>
+                        <a href="#">Home</a>
                         <i class="fa fa-angle-right"></i>
                     </li>
                     <li>
@@ -1189,11 +1114,11 @@
                                     <i class="icon-bell"></i> Action</a>
                             </li> -->
                             <li>
-                                <a href="#">
+                                <a href="{{ route('client.country.view') }}">
                                     <i class="icon-user"></i>My country</a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{ route('client.index') }}">
                                     <i class="icon-users"></i>All </a>
                             </li>
                             <li class="divider"> </li>
@@ -1253,89 +1178,19 @@
                             <div class="scroller" style="height:400px" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
                             <div class="tab-content">
                                 <div class="tab-pane active" id="portlet_tab1">
-                                  @if(!$all['announcements'])
+                                  @if(count($all['announcements'])==0)
                                   <div class="note note-success"><h3>No Death announcements</h3>  </div>
-
                                      @else
-
                                   @foreach ($all['announcements'] as $row)
                                     <div class ="col-lg-12">
                                   <div class ="col-lg-2 col-md-2 col-sm-2">
-                                      <img width="70%" src="{{Storage::url($row->file_path)}}" /></div>
-
+                                      <img width="70%" src="{{Storage::url($row->image_thumb)}}" /></div>
                                     {{$row->title}}<br/>
                                     <p> {{$row->description}} </p>
                                         <div class="actions pull-right">
                                             <a href="{{ route('client.each.announcement',$row->id) }}" class="btn blue btn-sm">
                                                 <i class="fa fa-eye"></i> View </a>
-                                                <!-- <button type="button" class="btn blue btn-sm" data-toggle="modal" data-target="#myModal{{$row->id}}" >tribute</button> -->
-                                                <!--modal start-->
 
-                                                <!-- <div class="modal fade" id="myModal{{$row->id}}" role="dialog">
-                                                <div class="modal-dialog"> -->
-
-                                                  <!-- Modal content-->
-                                                  <!-- <div class="modal-content col-lg-12 col-md-6 col-sm-6">
-
-                                                    <div class="modal-header">
-                                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                      <h4 class="modal-title">Tributes{{$row->id}}</h4>
-                                                    </div> -->
-
-
-                                                   <!-- <div class="scroller" style="height:100px" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">  -->
-                                                    <!-- <div class="modal-body">
-                                                      <div class="scroller" style="height:100px" data-always-visible="1" data-rail-visible="1" data-rail-color="blue" data-handle-color="red">
-
-                                                         <p>Sorry for your loss</p>
-                                                         <p>May he rest in peace</p>
-                                                         <p>We will include you in our prayers</p>
-                                                         <p>Sorry for your loss</p>
-                                                    </div>
-                                                      </div> -->
-                                                    <!-- <div class="modal-footer">
-                                                      <div class="form-group">
-
-                                                          <div class="col-md-7">
-                                                              <textarea class="form-control" rows="2" name="description"></textarea>
-                                                          </div>
-                                                      </div>
-                                                       <button type="button" class="btn btn-default" data-dismiss="modal">post</button>
-                                                    </div> -->
-<!--
-                                                  </div>
-
-                                                </div> -->
-                                                <!-- </div> -->
-
-                                                <!--modal end-->
-<!-- <div class="fb-share-button" data-href="http://localhost:8000/" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8000%2F&amp;src=sdkpreparse">Share</a></div> -->
-                                            <!-- <div class="btn-group">
-                                                <a class="btn btn-sm green"  data-toggle="dropdown">
-                                                    <i class="fa fa-user"></i> Share
-                                                    <i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-
-                                                        <a class="fb-share-button" data-href="http://localhost:8000/" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8000%2F&amp;src=sdkpreparse">
-                                                            <i class="fa fa-facebook"></i> Facebook</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="fa fa-linkedin"></i> Linkedin </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="fa fa-twitter"></i> Twitter</a>
-                                                    </li>
-                                                    <li class="divider"> </li>
-                                                    <li>
-                                                        <a href="javascript:;"> Download euology </a>
-                                                    </li>
-                                                </ul>
-
-                                            </div> -->
                                         </div><br/>
                                         <hr/>
                                         </div>
@@ -1351,19 +1206,20 @@
                                     @foreach ($all['missing'] as $row)
                                   <div class ="col-lg-2 col-md-2 col-sm-2">
 
-                                    <img width="70%" src=" {{Storage::url($row->file_path)}}"  >
+                                    <img width="70%" src=" {{Storage::url($row->image_thumb)}}"  >
                                        </div>
 
                                     {{$row->title}}<br/>
                                     <p> {{$row->description}} </p>
                                         <div class="actions pull-right">
 
-                                            <div class="btn-group">
-                                                <a class="btn btn-sm green" href="javascript:;" data-toggle="dropdown">
+                                            <div class="btn-group">  <a href="{{ route('client.each.announcement',$row->id) }}" class="btn blue btn-sm">
+                                                  <i class="fa fa-eye"></i> View </a>
+                                                <!-- <a class="btn btn-sm green" href="javascript:;" data-toggle="dropdown">
                                                     <i class="fa fa-user"></i> Share
                                                     <i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
+                                                </a> -->
+                                                <!-- <ul class="dropdown-menu pull-right">
                                                     <li>
                                                         <a href="javascript:;">
                                                             <i class="fa fa-facebook"></i> Facebook</a>
@@ -1378,7 +1234,7 @@
                                                     </li>
                                                     <li class="divider"> </li>
 
-                                                </ul>
+                                                </ul> -->
 
                                             </div>
                                         </div><br/>
@@ -1396,7 +1252,8 @@
 
                                   @foreach ($all['public'] as $row)
                                   <div class ="col-lg-2 col-md-2 col-sm-2">
-                                    <img width="70%" src="{{ $row->image_path}}"  >
+                                    <!-- <img width="70%" src="{{ $row->image_path}}"  > -->
+                                      <img width="70%" src=" {{Storage::url($row->image_thumb)}}"
                                        </div>
 
                                   {{$row->title}}<br/>
@@ -1404,27 +1261,9 @@
                                         <div class="actions pull-right">
 
                                             <div class="btn-group">
-                                                <a class="btn btn-sm green" href="javascript:;" data-toggle="dropdown">
-                                                    <i class="fa fa-user"></i> Share
-                                                    <i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
 
-                                                        <!-- <a href="javascript:;">
-                                                            <i class="fa fa-facebook"></i> Facebook</a> -->
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="fa fa-linkedin"></i> Linkedin </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="fa fa-twitter"></i> Twitter</a>
-                                                    </li>
-                                                    <li class="divider"> </li>
-
-                                                </ul>
+                                              <a href="{{ route('client.each.announcement',$row->id) }}" class="btn blue btn-sm">
+                                                  <i class="fa fa-eye"></i> View </a>
 
                                             </div>
                                         </div><br/>
@@ -1442,7 +1281,8 @@
                                       @foreach ($all['anniversaries'] as $row)
                                   <div class ="col-lg-2 col-md-2 col-sm-2">
                                     <!-- <img width="70%" src="{{ URL::asset('layout_assets/img/clients/male.png')}}"  > -->
-                                       <img width="70%" src="{{ $row->image_path}}"  >
+                                       <!-- <img width="70%" src="{{ $row->image_path}}"  > -->
+                                        <img width="70%" src="{{ $row->image_thumb}}"  >
                                        </div>
 
 
@@ -1451,26 +1291,9 @@
                                         <div class="actions pull-right">
 
                                             <div class="btn-group">
-                                                <a class="btn btn-sm green" href="javascript:;" data-toggle="dropdown">
-                                                    <i class="fa fa-user"></i> Share
-                                                    <i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="fa fa-facebook"></i> Facebook</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="fa fa-linkedin"></i> Linkedin </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="fa fa-twitter"></i> Twitter</a>
-                                                    </li>
-                                                    <li class="divider"> </li>
 
-                                                </ul>
+                                              <a href="{{ route('client.each.announcement',$row->id) }}" class="btn blue btn-sm">
+                                                  <i class="fa fa-eye"></i> View </a>
 
                                             </div>
                                         </div><br/>
@@ -1640,7 +1463,7 @@
                                 <img class="media-object" src="../assets/layouts/layout/img/avatar9.jpg" alt="...">
                                 <div class="media-body">
                                     <h4 class="media-heading">Deon Portalatin</h4>
-                                    <div class="media-heading-sub"> CFO, H&D LTD </div>
+                                    <div class="media-heading-sub"> CFO, HD LTD </div>
                                 </div>
                             </li>
                             <li class="media">

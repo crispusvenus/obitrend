@@ -14,19 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/about', function () {
-//     return view('about-us');
-// });
 
-// Route::get('/about ',[
-// 'uses' => 'LandingController@index',
-// 'as' => 'about.us'
-// ]);
  Route::get('/about', 'LandingController@index')->name('about');
-  Route::get('/pricing', 'LandingController@pricing')->name('pricing');
+ Route::get('/pricing', 'LandingController@pricing')->name('pricing');
+ Route::get('/', 'LandingController@welcome')->name('welcome');
+
  //  Route::post('/profile/edit/profile',[
  // 'uses' => 'LandingController@register',
  // 'as' => 'regster'
+ // ]);
+ // Route::post('/show/registration', [
+ // 'uses' => 'LandingController@show',
+ // 'as' => 'show.reg'
  // ]);
 
 
@@ -64,19 +63,17 @@ Route::group(['middleware' => 'auth'], function()
     'uses' => 'HomeController@index',
     'as' => 'client.index'
     ]);
-    Route::get('api/announcements/view', [
-    'uses' => 'HomeController@index',
-    'as' => 'client.api.index'
+    Route::get('/announcements/view/myCountry', [
+    'uses' => 'HomeController@my_country',
+    'as' => 'client.country.view'
     ]);
+
 // sends client request from form data to controller
     Route::post('/announcements/make', [
     'uses' => 'AnnouncementController@create',
     'as' => 'create.announcement'
     ]);
-    Route::post('api/announcements/make', [
-    'uses' => 'AnnouncementApiController@create',
-    'as' => 'create.announcement'
-    ]);
+
     //updates announcements
     Route::post('/announcements/update/{id}', [
     'uses' => 'AnnouncementController@update',
@@ -87,10 +84,7 @@ Route::group(['middleware' => 'auth'], function()
     'uses' => 'AnnouncementController@index',
     'as' => 'client.make'
     ]);
-    Route::get('api/announcements/make', [
-    'uses' => 'AnnouncementApiController@index',
-    'as' => 'client.make.api'
-    ]);
+  
     //fetches each announcement
     Route::get('/announcements/show/{id}', [
     'uses' => 'AnnouncementController@announcements',
@@ -125,16 +119,16 @@ Route::group(['middleware' => 'auth'], function()
     'uses' => 'AnnouncementController@create_comment',
     'as' => 'create.comment'
     ]);
-    Route::get('storage/upload/{id}','AnnouncementController@artwork');
-    // Route::get('storage/avatars/{id}','AnnouncementController@artwork');
-    // Route::get('storage/defaults/avatars/{id}','AnnouncementController@artwork');
-    // Route::get('storage/upload/{path}', [
-    // 'uses' => 'AnnouncementController@artwork',
-    // 'as' => 'client.image'
-    // ]);
+    //posts comment
+    Route::post('/comments/create', [
+    'uses' => 'AnnouncementController@create_comments',
+    'as' => 'create.comments'
+    ]);
+    Route::get('admin/pdf','AnnouncementController@download');
 
-
-
-
+    //routes to extract images from storage
+    Route::get('storage/upload/{id}','AnnouncementController@upload');
+    Route::get('storage/id/{id}','AnnouncementController@id');
+    Route::get('storage/defaults/avatars/{id}','AnnouncementController@avatar');
 
 });

@@ -134,24 +134,36 @@ License: You must have a valid license purchased only from themeforest(the above
                         </span>@endif</div>
                     <div class="form-group{{ $errors->has('other_names') ? ' has-error' : '' }}">
                         <label class="control-label visible-ie8 visible-ie9">Last Name</label>
-                        <input class="form-control placeholder-no-fix" type="text" placeholder="last Name" id="other_names" value="{{ old('other_names') }}" name="other_names" /> </div>
+                        <input class="form-control placeholder-no-fix" type="text" placeholder="last Name" id="other_names" value="{{ old('other_names') }}" name="other_names"/>
+                        @if ($errors->has('other_name'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('other_name') }}</strong>
+                            </span>@endif </div>
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                     <label class="control-label visible-ie8 visible-ie9">Email</label>
-                    <input class="form-control placeholder-no-fix" type="text" placeholder="Email" value="{{ old('email') }}" name="email" /> </div>
+                    <input class="form-control placeholder-no-fix" type="text" placeholder="Email" value="{{ old('email') }}" name="email" />
+                    @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>@endif</div>
                 <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                     <label class="control-label visible-ie8 visible-ie9">Phone Number</label>
-                    <input class="form-control placeholder-no-fix" type="text" placeholder="Phone" value="{{ old('phone') }}" name="phone" /> </div>
+                    <input class="form-control placeholder-no-fix" type="text" placeholder="Phone" value="{{ old('phone') }}" name="phone" />
+                    @if ($errors->has('phone'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('phone') }}</strong>
+                        </span>@endif </div>
                 <div class="form-group">
                     <label class="control-label visible-ie8 visible-ie9">Gender</label>
                     <select class="form-control" name="gender" placeholder="Gender" id="gender">
                         <option value="1">Male</option>
                         <option value="0">Female</option>
                     </select> </div>
-                  
-                 <div class="form-group">
+
+ <div class="form-group">
                     <label class="control-label visible-ie8 visible-ie9">Country</label>
-                    <select name="country" class="form-control">
+                    <select name="my_country"  class="form-control">
                         <option value="">Country</option>
                         <option value="AF">Afghanistan</option>
                         <option value="AL">Albania</option>
@@ -393,9 +405,13 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!-- <div class="form-group">
                     <label class="control-label visible-ie8 visible-ie9">Username</label>
                     <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" /> </div> -->
-                <div class="form-group">
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                     <label class="control-label visible-ie8 visible-ie9">Password</label>
-                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" name="password" /> </div>
+                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" name="password" />
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>@endif </div>
                 <div class="form-group">
                     <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
                     <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="rpassword" /> </div>

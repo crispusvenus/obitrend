@@ -1,1891 +1,846 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
 
-@section('content')
-<div class="page-container">
-    <!-- BEGIN SIDEBAR -->
-    <div class="page-sidebar-wrapper">
-        <!-- END SIDEBAR -->
-        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-        <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-        <div class="page-sidebar navbar-collapse collapse">
-            <!-- BEGIN SIDEBAR MENU -->
-            <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
-            <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
-            <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
-            <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-            <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
-            <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-            <!-- <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                <li class="nav-item start ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-home"></i>
-                        <span class="title">Dashboard</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item start ">
-                            <a href="index.html" class="nav-link ">
-                                <i class="icon-bar-chart"></i>
-                                <span class="title">Dashboard 1</span>
-                            </a>
-                        </li>
-                        <li class="nav-item start ">
-                            <a href="dashboard_2.html" class="nav-link ">
-                                <i class="icon-bulb"></i>
-                                <span class="title">Dashboard 2</span>
-                                <span class="badge badge-success">1</span>
-                            </a>
-                        </li>
-                        <li class="nav-item start ">
-                            <a href="dashboard_3.html" class="nav-link ">
-                                <i class="icon-graph"></i>
-                                <span class="title">Dashboard 3</span>
-                                <span class="badge badge-danger">5</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-diamond"></i>
-                        <span class="title">UI Features</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="ui_colors.html" class="nav-link ">
-                                <span class="title">Color Library</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_metronic_grid.html" class="nav-link ">
-                                <span class="title">Metronic Grid System</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_general.html" class="nav-link ">
-                                <span class="title">General Components</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_buttons.html" class="nav-link ">
-                                <span class="title">Buttons</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_buttons_spinner.html" class="nav-link ">
-                                <span class="title">Spinner Buttons</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_confirmations.html" class="nav-link ">
-                                <span class="title">Popover Confirmations</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_sweetalert.html" class="nav-link ">
-                                <span class="title">Bootstrap Sweet Alerts</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_icons.html" class="nav-link ">
-                                <span class="title">Font Icons</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_socicons.html" class="nav-link ">
-                                <span class="title">Social Icons</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_typography.html" class="nav-link ">
-                                <span class="title">Typography</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_tabs_accordions_navs.html" class="nav-link ">
-                                <span class="title">Tabs, Accordions & Navs</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_timeline.html" class="nav-link ">
-                                <span class="title">Timeline 1</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_timeline_2.html" class="nav-link ">
-                                <span class="title">Timeline 2</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_timeline_horizontal.html" class="nav-link ">
-                                <span class="title">Horizontal Timeline</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_tree.html" class="nav-link ">
-                                <span class="title">Tree View</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <span class="title">Page Progress Bar</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item ">
-                                    <a href="ui_page_progress_style_1.html" class="nav-link "> Flash </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="ui_page_progress_style_2.html" class="nav-link "> Big Counter </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_blockui.html" class="nav-link ">
-                                <span class="title">Block UI</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_bootstrap_growl.html" class="nav-link ">
-                                <span class="title">Bootstrap Growl Notifications</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_notific8.html" class="nav-link ">
-                                <span class="title">Notific8 Notifications</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_toastr.html" class="nav-link ">
-                                <span class="title">Toastr Notifications</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_bootbox.html" class="nav-link ">
-                                <span class="title">Bootbox Dialogs</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_alerts_api.html" class="nav-link ">
-                                <span class="title">Metronic Alerts API</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_session_timeout.html" class="nav-link ">
-                                <span class="title">Session Timeout</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_idle_timeout.html" class="nav-link ">
-                                <span class="title">User Idle Timeout</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_modals.html" class="nav-link ">
-                                <span class="title">Modals</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_extended_modals.html" class="nav-link ">
-                                <span class="title">Extended Modals</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_tiles.html" class="nav-link ">
-                                <span class="title">Tiles</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_datepaginator.html" class="nav-link ">
-                                <span class="title">Date Paginator</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ui_nestable.html" class="nav-link ">
-                                <span class="title">Nestable List</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-puzzle"></i>
-                        <span class="title">Components</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="components_date_time_pickers.html" class="nav-link ">
-                                <span class="title">Date & Time Pickers</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_color_pickers.html" class="nav-link ">
-                                <span class="title">Color Pickers</span>
-                                <span class="badge badge-danger">2</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_select2.html" class="nav-link ">
-                                <span class="title">Select2 Dropdowns</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_bootstrap_multiselect_dropdown.html" class="nav-link ">
-                                <span class="title">Bootstrap Multiselect Dropdowns</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_bootstrap_select.html" class="nav-link ">
-                                <span class="title">Bootstrap Select</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_multi_select.html" class="nav-link ">
-                                <span class="title">Bootstrap Multiple Select</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_bootstrap_select_splitter.html" class="nav-link ">
-                                <span class="title">Select Splitter</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_clipboard.html" class="nav-link ">
-                                <span class="title">Clipboard</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_typeahead.html" class="nav-link ">
-                                <span class="title">Typeahead Autocomplete</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_bootstrap_tagsinput.html" class="nav-link ">
-                                <span class="title">Bootstrap Tagsinput</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_bootstrap_switch.html" class="nav-link ">
-                                <span class="title">Bootstrap Switch</span>
-                                <span class="badge badge-success">6</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_bootstrap_maxlength.html" class="nav-link ">
-                                <span class="title">Bootstrap Maxlength</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_bootstrap_fileinput.html" class="nav-link ">
-                                <span class="title">Bootstrap File Input</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_bootstrap_touchspin.html" class="nav-link ">
-                                <span class="title">Bootstrap Touchspin</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_form_tools.html" class="nav-link ">
-                                <span class="title">Form Widgets & Tools</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_context_menu.html" class="nav-link ">
-                                <span class="title">Context Menu</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_editors.html" class="nav-link ">
-                                <span class="title">Markdown & WYSIWYG Editors</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_code_editors.html" class="nav-link ">
-                                <span class="title">Code Editors</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_ion_sliders.html" class="nav-link ">
-                                <span class="title">Ion Range Sliders</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_noui_sliders.html" class="nav-link ">
-                                <span class="title">NoUI Range Sliders</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="components_knob_dials.html" class="nav-link ">
-                                <span class="title">Knob Circle Dials</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-settings"></i>
-                        <span class="title">Form Stuff</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="form_controls.html" class="nav-link ">
-                                <span class="title">Bootstrap Form
-                                    <br>Controls</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="form_controls_md.html" class="nav-link ">
-                                <span class="title">Material Design
-                                    <br>Form Controls</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="form_validation.html" class="nav-link ">
-                                <span class="title">Form Validation</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="form_validation_states_md.html" class="nav-link ">
-                                <span class="title">Material Design
-                                    <br>Form Validation States</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="form_validation_md.html" class="nav-link ">
-                                <span class="title">Material Design
-                                    <br>Form Validation</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="form_layouts.html" class="nav-link ">
-                                <span class="title">Form Layouts</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="form_repeater.html" class="nav-link ">
-                                <span class="title">Form Repeater</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="form_input_mask.html" class="nav-link ">
-                                <span class="title">Form Input Mask</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="form_editable.html" class="nav-link ">
-                                <span class="title">Form X-editable</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="form_wizard.html" class="nav-link ">
-                                <span class="title">Form Wizard</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="form_icheck.html" class="nav-link ">
-                                <span class="title">iCheck Controls</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="form_image_crop.html" class="nav-link ">
-                                <span class="title">Image Cropping</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="form_fileupload.html" class="nav-link ">
-                                <span class="title">Multiple File Upload</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="form_dropzone.html" class="nav-link ">
-                                <span class="title">Dropzone File Upload</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-bulb"></i>
-                        <span class="title">Elements</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="elements_steps.html" class="nav-link ">
-                                <span class="title">Steps</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="elements_lists.html" class="nav-link ">
-                                <span class="title">Lists</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="elements_ribbons.html" class="nav-link ">
-                                <span class="title">Ribbons</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="elements_overlay.html" class="nav-link ">
-                                <span class="title">Overlays</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="elements_cards.html" class="nav-link ">
-                                <span class="title">User Cards</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-briefcase"></i>
-                        <span class="title">Tables</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="table_static_basic.html" class="nav-link ">
-                                <span class="title">Basic Tables</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="table_static_responsive.html" class="nav-link ">
-                                <span class="title">Responsive Tables</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="table_bootstrap.html" class="nav-link ">
-                                <span class="title">Bootstrap Tables</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <span class="title">Datatables</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item ">
-                                    <a href="table_datatables_managed.html" class="nav-link "> Managed Datatables </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="table_datatables_buttons.html" class="nav-link "> Buttons Extension </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="table_datatables_colreorder.html" class="nav-link "> Colreorder Extension </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="table_datatables_rowreorder.html" class="nav-link "> Rowreorder Extension </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="table_datatables_scroller.html" class="nav-link "> Scroller Extension </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="table_datatables_fixedheader.html" class="nav-link "> FixedHeader Extension </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="table_datatables_responsive.html" class="nav-link "> Responsive Extension </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="table_datatables_editable.html" class="nav-link "> Editable Datatables </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="table_datatables_ajax.html" class="nav-link "> Ajax Datatables </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  active open">
-                    <a href="?p=" class="nav-link nav-toggle">
-                        <i class="icon-wallet"></i>
-                        <span class="title">Portlets</span>
-                        <span class="selected"></span>
-                        <span class="arrow open"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  active open">
-                            <a href="portlet_boxed.html" class="nav-link ">
-                                <span class="title">Boxed Portlets</span>
-                                <span class="selected"></span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="portlet_light.html" class="nav-link ">
-                                <span class="title">Light Portlets</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="portlet_solid.html" class="nav-link ">
-                                <span class="title">Solid Portlets</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="portlet_ajax.html" class="nav-link ">
-                                <span class="title">Ajax Portlets</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="portlet_draggable.html" class="nav-link ">
-                                <span class="title">Draggable Portlets</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-bar-chart"></i>
-                        <span class="title">Charts</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="charts_amcharts.html" class="nav-link ">
-                                <span class="title">amChart</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="charts_flotcharts.html" class="nav-link ">
-                                <span class="title">Flot Charts</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="charts_flowchart.html" class="nav-link ">
-                                <span class="title">Flow Charts</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="charts_google.html" class="nav-link ">
-                                <span class="title">Google Charts</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="charts_echarts.html" class="nav-link ">
-                                <span class="title">eCharts</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="charts_morris.html" class="nav-link ">
-                                <span class="title">Morris Charts</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <span class="title">HighCharts</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item ">
-                                    <a href="charts_highcharts.html" class="nav-link "> HighCharts </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="charts_highstock.html" class="nav-link "> HighStock </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="charts_highmaps.html" class="nav-link "> HighMaps </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-pointer"></i>
-                        <span class="title">Maps</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="maps_google.html" class="nav-link ">
-                                <span class="title">Google Maps</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="maps_vector.html" class="nav-link ">
-                                <span class="title">Vector Maps</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-layers"></i>
-                        <span class="title">Page Layouts</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="layout_blank_page.html" class="nav-link ">
-                                <span class="title">Blank Page</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="layout_ajax_page.html" class="nav-link ">
-                                <span class="title">Ajax Content Layout</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="layout_language_bar.html" class="nav-link ">
-                                <span class="title">Header Language Bar</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="layout_footer_fixed.html" class="nav-link ">
-                                <span class="title">Fixed Footer</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="layout_boxed_page.html" class="nav-link ">
-                                <span class="title">Boxed Page</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-feed"></i>
-                        <span class="title">Sidebar Layouts</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="layout_sidebar_menu_accordion.html" class="nav-link ">
-                                <span class="title">Sidebar Accordion Menu</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="layout_sidebar_menu_compact.html" class="nav-link ">
-                                <span class="title">Sidebar Compact Menu</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="layout_sidebar_reversed.html" class="nav-link ">
-                                <span class="title">Reversed Sidebar Page</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="layout_sidebar_fixed.html" class="nav-link ">
-                                <span class="title">Fixed Sidebar Layout</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="layout_sidebar_closed.html" class="nav-link ">
-                                <span class="title">Closed Sidebar Layout</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class=" icon-wrench"></i>
-                        <span class="title">Custom Layouts</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="layout_disabled_menu.html" class="nav-link ">
-                                <span class="title">Disabled Menu Links</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="layout_full_height_portlet.html" class="nav-link ">
-                                <span class="title">Full Height Portlet</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="layout_full_height_content.html" class="nav-link ">
-                                <span class="title">Full Height Content</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-basket"></i>
-                        <span class="title">eCommerce</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="ecommerce_index.html" class="nav-link ">
-                                <i class="icon-home"></i>
-                                <span class="title">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ecommerce_orders.html" class="nav-link ">
-                                <i class="icon-basket"></i>
-                                <span class="title">Orders</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ecommerce_orders_view.html" class="nav-link ">
-                                <i class="icon-tag"></i>
-                                <span class="title">Order View</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ecommerce_products.html" class="nav-link ">
-                                <i class="icon-graph"></i>
-                                <span class="title">Products</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="ecommerce_products_edit.html" class="nav-link ">
-                                <i class="icon-graph"></i>
-                                <span class="title">Product Edit</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-docs"></i>
-                        <span class="title">Apps</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="app_todo.html" class="nav-link ">
-                                <i class="icon-clock"></i>
-                                <span class="title">Todo 1</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="app_todo_2.html" class="nav-link ">
-                                <i class="icon-check"></i>
-                                <span class="title">Todo 2</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="app_inbox.html" class="nav-link ">
-                                <i class="icon-envelope"></i>
-                                <span class="title">Inbox</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="app_calendar.html" class="nav-link ">
-                                <i class="icon-calendar"></i>
-                                <span class="title">Calendar</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="app_ticket.html" class="nav-link ">
-                                <i class="icon-notebook"></i>
-                                <span class="title">Support</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-user"></i>
-                        <span class="title">User</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="page_user_profile_1.html" class="nav-link ">
-                                <i class="icon-user"></i>
-                                <span class="title">Profile 1</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_user_profile_1_account.html" class="nav-link ">
-                                <i class="icon-user-female"></i>
-                                <span class="title">Profile 1 Account</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_user_profile_1_help.html" class="nav-link ">
-                                <i class="icon-user-following"></i>
-                                <span class="title">Profile 1 Help</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_user_profile_2.html" class="nav-link ">
-                                <i class="icon-users"></i>
-                                <span class="title">Profile 2</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-notebook"></i>
-                                <span class="title">Login</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item ">
-                                    <a href="page_user_login_1.html" class="nav-link " target="_blank"> Login Page 1 </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="page_user_login_2.html" class="nav-link " target="_blank"> Login Page 2 </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="page_user_login_3.html" class="nav-link " target="_blank"> Login Page 3 </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="page_user_login_4.html" class="nav-link " target="_blank"> Login Page 4 </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="page_user_login_5.html" class="nav-link " target="_blank"> Login Page 5 </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="page_user_login_6.html" class="nav-link " target="_blank"> Login Page 6 </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_user_lock_1.html" class="nav-link " target="_blank">
-                                <i class="icon-lock"></i>
-                                <span class="title">Lock Screen 1</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_user_lock_2.html" class="nav-link " target="_blank">
-                                <i class="icon-lock-open"></i>
-                                <span class="title">Lock Screen 2</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-social-dribbble"></i>
-                        <span class="title">General</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="page_general_about.html" class="nav-link ">
-                                <i class="icon-info"></i>
-                                <span class="title">About</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_general_contact.html" class="nav-link ">
-                                <i class="icon-call-end"></i>
-                                <span class="title">Contact</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-notebook"></i>
-                                <span class="title">Portfolio</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item ">
-                                    <a href="page_general_portfolio_1.html" class="nav-link "> Portfolio 1 </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="page_general_portfolio_2.html" class="nav-link "> Portfolio 2 </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="page_general_portfolio_3.html" class="nav-link "> Portfolio 3 </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="page_general_portfolio_4.html" class="nav-link "> Portfolio 4 </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-magnifier"></i>
-                                <span class="title">Search</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item ">
-                                    <a href="page_general_search.html" class="nav-link "> Search 1 </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="page_general_search_2.html" class="nav-link "> Search 2 </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="page_general_search_3.html" class="nav-link "> Search 3 </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="page_general_search_4.html" class="nav-link "> Search 4 </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a href="page_general_search_5.html" class="nav-link "> Search 5 </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_general_pricing.html" class="nav-link ">
-                                <i class="icon-tag"></i>
-                                <span class="title">Pricing</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_general_faq.html" class="nav-link ">
-                                <i class="icon-wrench"></i>
-                                <span class="title">FAQ</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_general_blog.html" class="nav-link ">
-                                <i class="icon-pencil"></i>
-                                <span class="title">Blog</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_general_blog_post.html" class="nav-link ">
-                                <i class="icon-note"></i>
-                                <span class="title">Blog Post</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_general_invoice.html" class="nav-link ">
-                                <i class="icon-envelope"></i>
-                                <span class="title">Invoice</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_general_invoice_2.html" class="nav-link ">
-                                <i class="icon-envelope"></i>
-                                <span class="title">Invoice 2</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-settings"></i>
-                        <span class="title">System</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="page_cookie_consent_1.html" class="nav-link ">
-                                <span class="title">Cookie Consent 1</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_cookie_consent_2.html" class="nav-link ">
-                                <span class="title">Cookie Consent 2</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_system_coming_soon.html" class="nav-link " target="_blank">
-                                <span class="title">Coming Soon</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_system_404_1.html" class="nav-link ">
-                                <span class="title">404 Page 1</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_system_404_2.html" class="nav-link " target="_blank">
-                                <span class="title">404 Page 2</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_system_404_3.html" class="nav-link " target="_blank">
-                                <span class="title">404 Page 3</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_system_500_1.html" class="nav-link ">
-                                <span class="title">500 Page 1</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="page_system_500_2.html" class="nav-link " target="_blank">
-                                <span class="title">500 Page 2</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-folder"></i>
-                        <span class="title">Multi Level Menu</span>
-                        <span class="arrow "></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-settings"></i> Item 1
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item">
-                                    <a href="?p=dashboard-2" target="_blank" class="nav-link">
-                                        <i class="icon-user"></i> Arrow Toggle
-                                        <span class="arrow nav-toggle"></span>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="icon-power"></i> Sample Link 1</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="icon-paper-plane"></i> Sample Link 1</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="icon-star"></i> Sample Link 1</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="icon-camera"></i> Sample Link 1</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="icon-link"></i> Sample Link 2</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="icon-pointer"></i> Sample Link 3</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="?p=dashboard-2" target="_blank" class="nav-link">
-                                <i class="icon-globe"></i> Arrow Toggle
-                                <span class="arrow nav-toggle"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="icon-tag"></i> Sample Link 1</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="icon-pencil"></i> Sample Link 1</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="icon-graph"></i> Sample Link 1</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="icon-bar-chart"></i> Item 3 </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul> -->
-            <!-- END SIDEBAR MENU -->
-        </div>
-        <!-- END SIDEBAR -->
-    </div>
-    <!-- END SIDEBAR -->
-    <!-- BEGIN CONTENT -->
-    <div class="page-content-wrapper">
-        <!-- BEGIN CONTENT BODY -->
-        <div class="page-content">
-            <!-- BEGIN PAGE HEADER-->
-            <!-- BEGIN THEME PANEL -->
-            <div class="theme-panel">
-                <div class="toggler tooltips" data-container="body" data-placement="left" data-html="true" data-original-title="Click to open advance theme customizer panel">
-                    <i class="icon-settings"></i>
-                </div>
-                <div class="toggler-close">
-                    <i class="icon-close"></i>
-                </div>
-                <div class="theme-options">
-                    <div class="theme-option theme-colors clearfix">
-                        <span> THEME COLOR </span>
-                        <ul>
-                            <li class="color-default current tooltips" data-style="default" data-container="body" data-original-title="Default"> </li>
-                            <li class="color-grey tooltips" data-style="grey" data-container="body" data-original-title="Grey"> </li>
-                            <li class="color-blue tooltips" data-style="blue" data-container="body" data-original-title="Blue"> </li>
-                            <li class="color-dark tooltips" data-style="dark" data-container="body" data-original-title="Dark"> </li>
-                            <li class="color-light tooltips" data-style="light" data-container="body" data-original-title="Light"> </li>
-                        </ul>
-                    </div>
-                    <div class="theme-option">
-                        <span> Layout </span>
-                        <select class="layout-option form-control input-small">
-                            <option value="fluid" selected="selected">Fluid</option>
-                            <option value="boxed">Boxed</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Header </span>
-                        <select class="page-header-option form-control input-small">
-                            <option value="fixed" selected="selected">Fixed</option>
-                            <option value="default">Default</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Top Dropdown</span>
-                        <select class="page-header-top-dropdown-style-option form-control input-small">
-                            <option value="light" selected="selected">Light</option>
-                            <option value="dark">Dark</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Sidebar Mode</span>
-                        <select class="sidebar-option form-control input-small">
-                            <option value="fixed">Fixed</option>
-                            <option value="default" selected="selected">Default</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Sidebar Style</span>
-                        <select class="sidebar-style-option form-control input-small">
-                            <option value="default" selected="selected">Default</option>
-                            <option value="compact">Compact</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Sidebar Menu </span>
-                        <select class="sidebar-menu-option form-control input-small">
-                            <option value="accordion" selected="selected">Accordion</option>
-                            <option value="hover">Hover</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Sidebar Position </span>
-                        <select class="sidebar-pos-option form-control input-small">
-                            <option value="left" selected="selected">Left</option>
-                            <option value="right">Right</option>
-                        </select>
-                    </div>
-                    <div class="theme-option">
-                        <span> Footer </span>
-                        <select class="page-footer-option form-control input-small">
-                            <option value="fixed">Fixed</option>
-                            <option value="default" selected="selected">Default</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <!-- END THEME PANEL -->
+<!-- Mirrored from 7oroof.com/tfdemos/whole/home-personal.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Sep 2017 11:00:35 GMT -->
+<head>
+<!-- Document Meta
+    ============================================= -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!--IE Compatibility Meta-->
+<meta name="author" content="zytheme"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="Whole is a pixel perfect creative multi purpose html5 tempalte  based on designed with great attention to details, flexibility and performance. It is ultra professional, smooth and sleek, with a clean modern layout">
+<link href="assets/images/favicon/favicon.png" rel="icon">
 
-            <div class="page-bar">
-                <ul class="page-breadcrumb">
-                    <li>
-                        <i class="icon-home"></i>
-                        <a href="index.html">Home</a>
-                        <i class="fa fa-angle-right"></i>
-                    </li>
-                    <li>
-                        <span>View announcements</span>
-                    </li>
-                </ul>
-                <div class="page-toolbar">
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true"> Actions
-                            <i class="fa fa-angle-down"></i>
-                        </button>
-                        <ul class="dropdown-menu pull-right" role="menu">
-                            <li>
-                                <a href="#">
-                                    <i class="icon-bell"></i> Action</a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-shield"></i> Another action</a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-user"></i> Something else here</a>
-                            </li>
-                            <li class="divider"> </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-bag"></i> Separated link</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- END PAGE HEADER-->
+<!-- Fonts
+    ============================================= -->
+<link href='http://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CDroid+Serif:400,400i,700,700i' rel='stylesheet' type='text/css'>
+
+<!-- Stylesheets
+    ============================================= -->
+<link href="{{asset('assets/css/external.css')}}" rel="stylesheet">
+<link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+<link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+<!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+<!-- Document Title
+    ============================================= -->
+<title>Whole | Multi-purpose Business Html5 Template</title>
+</head>
+<body>
+<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="wrapper clearfix">
+<header id="navbar-spy" class="header header-8 header-transparent header-fixed">
+	<nav id="primary-menu" class="navbar navbar-fixed-top">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				</button>
+				<a class="logo" href="index.html">
+					<img class="logo-light" src="{{asset('assets/images/logo/logo-light.png')}}" alt="Whole logo">
+					<img class="logo-dark" src="{{asset('assets/images/logo/logo-dark.png')}}" alt="Whole logo">
+				</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse pull-right" id="navbar-collapse-1">
+				<!-- Module Menu -->
+				<div class="module module-menu pull-left">
+					<div class="module-icon menu-icon">
+						<i class="fa fa-bars"></i>
+						<span class="title">Side Navigation</span>
+					</div>
+					<div class="module-content module-fullscreen">
+						<div class="pos-vertical-center">
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+									<ul class="list-unstyled menu-list text--center mb-0">
+										<li><a href="#">Home</a></li>
+										<li><a href="#">Pages</a></li>
+										<li><a href="#">Blog</a></li>
+										<li><a href="#">Portfolio</a></li>
+										<li><a href="#">Shop</a></li>
+										<li><a href="#">Features</a></li>
+										<li><a href="#">Elements</a></li>
+									</ul>
+
+								</div><!-- .col-md-8 end -->
+							</div><!-- .row end -->
+						</div><!-- .container end -->
+					</div>
+
+							<div class="menu-social">
+								<a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+								<a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+								<a class="instagram" href="#"><i class="fa fa-instagram"></i></a>
+								<a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+							</div>
+						<a class="module-cancel" href="#"><i class="fa fa-close"></i></a>
+					</div>
+				</div><!-- .module-menu end -->
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+</header>
+
+<!-- Slider #1
+============================================= -->
+<section id="slider" class="carousel slider slider-dots slider-navs" data-slide="1" data-slide-res="1" data-autoplay="true" data-nav="true" data-dots="true" data-space="0" data-loop="true" data-speed="800">
+
+	<!-- Slide #1 -->
+	<div class="slide--item bg-overlay bg-overlay-dark">
+		<div class="bg-section">
+			<img src="{{asset('assets/images/sliders/slide-bg/6.jpg')}}" alt="background">
+		</div>
+		<div class="pos-vertical-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 text--center">
+						<div class="slide--subheadline">Hello, I'm Begha</div>
+						<div class="slide--headline">A Creative Designer</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 text--center">
+						<div class="slide--bio">Our strategists will help you set an objective, developing a plan that is custom-built for your business.</div>
+						<div class="slide-action">
+							<a class="btn btn--slide btn--white btn--bordered btn--rounded" href="#">Get Started</a>
+						</div>
+					</div>
+				</div><!-- .row end -->
+			</div><!-- .container end -->
+		</div>
+	</div><!-- .slide-item end -->
+
+	<!-- Slide #2 -->
+	<div class="slide--item bg-overlay bg-overlay-dark">
+		<div class="bg-section">
+			<img src="{{asset('assets/images/sliders/slide-bg/3.jpg')}}" alt="background">
+		</div>
+		<div class="pos-vertical-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 text--center">
+						<div class="slide--subheadline">I do the best</div>
+						<div class="slide--headline">Create amazing design</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 text--center">
+						<div class="slide--bio">we help you set an objective and choose your tools, developing a plan that is custom-built for your business. </div>
+						<div class="slide-action">
+							<a class="btn btn--slide btn--white btn--bordered btn--rounded" href="#">Get Started</a>
+						</div>
+					</div>
+				</div><!-- .row end -->
+			</div><!-- .container end -->
+		</div>
+	</div><!-- .slide-item end -->
+
+	<!-- Slide #3 -->
+	<div class="slide--item bg-overlay bg-overlay-dark">
+		<div class="bg-section">
+			<img src="{{asset('assets/images/sliders/slide-bg/3.jpg')}}" alt="background">
+		</div>
+		<div class="pos-vertical-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 text--center">
+						<div class="slide--subheadline">Unique work</div>
+						<div class="slide--headline">my clients trust me</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 text--center">
+						<div class="slide--bio">Our strategists will help you set an objective and choose your tools, developing a plan </div>
+						<div class="slide-action">
+							<a class="btn btn--slide btn--white btn--bordered btn--rounded" href="#">Get Started</a>
+						</div>
+					</div>
+				</div><!-- .row end -->
+			</div><!-- .container end -->
+		</div>
+	</div><!-- .slide-item end -->
+
+</section><!-- #slider end --><!-- Banner #1
+============================================= -->
+<section id="banners1" class="interactive pt-0 pb-0">
+	<div class="container-fluid">
+		<div class="row">
+				<div class="banner-panel">
+					<h6>We are helpers</h6>
+					<h3>Advice and guides</h3>
+					<p>After all, as described in Web Design Trends 2015 & 2016, vision dominates a lot of our subconscious interpretation of the world around images create a better user experience.</p>
+					<a href="#">Read More</a>
+				</div><!-- .boxed-panel end -->
+
+				<div class="banner-panel">
+					<div class="bg-section">
+						<img src="{{asset('assets/images/banners/3.jpg')}}" alt="Background"/>
+					</div>
+					<h6>Quick & smart</h6>
+					<h3>Great Solutions</h3>
+					<p>Rounding up a bunch of specific designs & talking about the merits of each is the perfect way to find common ground. Collecting a wide samples is a great way to start your project.</p>
+					<a href="#">Read More</a>
+				</div><!-- .boxed-panel end -->
+
+				<div class="banner-panel">
+					<h6>Friendly support</h6>
+					<h3>Support in person</h3>
+					<p>At its core, every brand has something special to reveal something that inspires people. We are a branding agency, this plan if you create a small portfolio or business showcase.</p>
+					<a href="#">Read More</a>
+				</div><!-- .boxed-panel end -->
+		</div><!-- .row end -->
+	</div><!-- .container end -->
+</section><!-- #banner1 end -->
+
+<!-- Portfolio 3 Column
+============================================= -->
+<section id="portfolio" class="portfolio portfolio-standard portfolio-3col pb-60 bg-white">
+	<div class="container">
+	<div class="row clearfix">
+			<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+				<div class="heading heading-2 text--center mb-30">
+					<p class="heading--subtitle">What We Have Done</p>
+					<h2 class="heading--title">Awesome Works</h2>
+					<div class="divider--line">
+						<i class="divider divider--1"></i>
+						<i class="divider divider--2"></i>
+						<i class="divider divider--3"></i>
+						<i class="divider divider--4"></i>
+					</div>
+					<p class="heading--desc">We are Whole business, our strategists will help you set an objective and choose your tools, developing a plan that is custom built for your business.</p>
+				</div>
+			</div><!-- .col-md-8 end -->
+		</div>
+		<div class="row">
+			<!-- Portfolio Filter
+			============================================= -->
+			<div class="col-xs-12 col-sm-12 col-md-12 portfolio-filter">
+				<ul class="list-inline mb-0">
+					<li><a class="active-filter" href="#" data-filter="*">All</a></li>
+					<li><a href="#" data-filter=".filter-branding">Branding</a></li>
+					<li><a href="#" data-filter=".filter-packaging">packaging</a></li>
+					<li><a href="#" data-filter=".filter-print">Print</a></li>
+					<li><a href="#" data-filter=".filter-web">Web Development</a></li>
+				</ul>
+			</div>
+			<!-- .Portfolio-filter end -->
+		</div>
+		<div id="portfolio-all" class="row">
+			<!-- Portfolio #1 -->
+			<div class="col-xs-12 col-sm-6 col-md-4 portfolio-item filter-web">
+				<div class="portfolio--img">
+					<img src="assets/images/portfolio/standard/2col/1.jpg" alt="Portfolio Item">
+					<div class="portfolio--hover">
+						<div class="portfolio--action">
+							<div class="pos-vertical-center">
+								<div class="portfolio-zoom">
+									<a class="img-popup" href="assets/images/portfolio/full/1.jpg" title="Portfolio Item">
+										<i class="icon--zoom"></i>
+									</a>
+								</div>
+							</div>
+						</div><!-- .Portfolio-action end -->
+					</div><!-- .Portfolio-hover end -->
+				</div><!-- .Portfolio-img end -->
+				<div class="portfolio--content">
+					<div class="portfolio--title">
+						<h4><a href="#">Kate & Tobby Branding</a></h4>
+					</div>
+					<div class="portfolio--cat">
+						<a href="#">Branding</a> , <a href="#">packaging</a>
+					</div>
+				</div>
+			</div><!-- . portfolio-item end -->
+
+			<!-- Portfolio #2 -->
+			<div class="col-xs-12 col-sm-6 col-md-4 portfolio-item filter-print">
+				<div class="portfolio--img">
+					<img src="assets/images/portfolio/standard/2col/2.jpg" alt="Portfolio Item">
+					<div class="portfolio--hover">
+						<div class="portfolio--action">
+							<div class="pos-vertical-center">
+								<div class="portfolio-zoom">
+									<a class="img-popup" href="assets/images/portfolio/full/2.jpg" title="Portfolio Item">
+										<i class="icon--zoom"></i>
+									</a>
+								</div>
+							</div>
+						</div><!-- .Portfolio-action end -->
+					</div><!-- .Portfolio-hover end -->
+				</div><!-- .Portfolio-img end -->
+				<div class="portfolio--content">
+					<div class="portfolio--title">
+						<h4><a href="#">The Living Branding</a></h4>
+					</div>
+					<div class="portfolio--cat">
+						<a href="#">Branding</a> , <a href="#">print</a>
+					</div>
+				</div>
+			</div><!-- . portfolio-item end -->
+
+			<!-- Portfolio #3 -->
+			<div class="col-xs-12 col-sm-6 col-md-4 portfolio-item filter-print">
+				<div class="portfolio--img">
+					<img src="assets/images/portfolio/standard/2col/3.jpg" alt="Portfolio Item">
+					<div class="portfolio--hover">
+						<div class="portfolio--action">
+							<div class="pos-vertical-center">
+								<div class="portfolio-zoom">
+									<a class="img-popup" href="assets/images/portfolio/full/3.jpg" title="Portfolio Item">
+										<i class="icon--zoom"></i>
+									</a>
+								</div>
+							</div>
+						</div><!-- .Portfolio-action end -->
+					</div><!-- .Portfolio-hover end -->
+				</div><!-- .Portfolio-img end -->
+				<div class="portfolio--content">
+					<div class="portfolio--title">
+						<h4><a href="#">Living Fruits Branding</a></h4>
+					</div>
+					<div class="portfolio--cat">
+						<a href="#">Branding</a>
+					</div>
+				</div>
+			</div><!-- . portfolio-item end -->
+
+			<!-- Portfolio #4 -->
+			<div class="col-xs-12 col-sm-6 col-md-4 portfolio-item filter-print">
+				<div class="portfolio--img">
+					<img src="assets/images/portfolio/standard/2col/4.jpg" alt="Portfolio Item">
+					<div class="portfolio--hover">
+						<div class="portfolio--action">
+							<div class="pos-vertical-center">
+								<div class="portfolio-zoom">
+									<a class="img-popup" href="assets/images/portfolio/full/4.jpg" title="Portfolio Item">
+										<i class="icon--zoom"></i>
+									</a>
+								</div>
+							</div>
+						</div><!-- .Portfolio-action end -->
+					</div><!-- .Portfolio-hover end -->
+				</div><!-- .Portfolio-img end -->
+				<div class="portfolio--content">
+					<div class="portfolio--title">
+						<h4><a href="#">Safari Coffee Packaging</a></h4>
+					</div>
+					<div class="portfolio--cat">
+						<a href="#">packaging</a> , <a href="#">branding</a>
+					</div>
+				</div>
+			</div><!-- . portfolio-item end -->
+
+			<!-- Portfolio #5 -->
+			<div class="col-xs-12 col-sm-6 col-md-4 portfolio-item filter-web">
+				<div class="portfolio--img">
+					<img src="assets/images/portfolio/standard/2col/5.jpg" alt="Portfolio Item">
+					<div class="portfolio--hover">
+						<div class="portfolio--action">
+							<div class="pos-vertical-center">
+								<div class="portfolio-zoom">
+									<a class="img-popup" href="assets/images/portfolio/full/5.jpg" title="Portfolio Item">
+										<i class="icon--zoom"></i>
+									</a>
+								</div>
+							</div>
+						</div><!-- .Portfolio-action end -->
+					</div><!-- .Portfolio-hover end -->
+				</div><!-- .Portfolio-img end -->
+				<div class="portfolio--content">
+					<div class="portfolio--title">
+						<h4><a href="#">Yellow Cards Print</a></h4>
+					</div>
+					<div class="portfolio--cat">
+						<a href="#">Print</a> , <a href="#">Packaging</a>
+					</div>
+				</div>
+			</div><!-- . portfolio-item end -->
+
+			<!-- Portfolio #6 -->
+			<div class="col-xs-12 col-sm-6 col-md-4 portfolio-item filter-branding">
+				<div class="portfolio--img">
+					<img src="assets/images/portfolio/standard/2col/6.jpg" alt="Portfolio Item">
+					<div class="portfolio--hover">
+						<div class="portfolio--action">
+							<div class="pos-vertical-center">
+								<div class="portfolio-zoom">
+									<a class="img-popup" href="assets/images/portfolio/full/6.jpg" title="Portfolio Item">
+										<i class="icon--zoom"></i>
+									</a>
+								</div>
+							</div>
+						</div><!-- .Portfolio-action end -->
+					</div><!-- .Portfolio-hover end -->
+				</div><!-- .Portfolio-img end -->
+				<div class="portfolio--content">
+					<div class="portfolio--title">
+						<h4><a href="#">K Tools Mockups</a></h4>
+					</div>
+					<div class="portfolio--cat">
+						<a href="#">Print</a> , <a href="#">Mockup</a>
+					</div>
+				</div>
+			</div><!-- . portfolio-item end -->
+		</div><!-- .row end -->
+		<!-- .row end -->
+	</div><!-- .container end -->
+</section><!-- #portfolio end -->
+
+<!-- Testimonial #3
+============================================= -->
+<section id="testimonial3" class="testimonial testimonial-2 testimonial-3 bg-overlay bg-overlay-dark bg-parallex">
+		<div class="bg-section">
+			<img src="assets/images/background/bg-7.jpg" alt="Background"/>
+		</div>
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+				<div class="heading heading-5 mb-60 text--center">
+					<p class="heading--subtitle text-white">Testimonials</p>
+					<h2 class="heading--title text-white">Our Happy Clients</h2>
+					<div class="divider--line">
+						<i class="divider divider--1"></i>
+						<i class="divider divider--2"></i>
+						<i class="divider divider--3"></i>
+						<i class="divider divider--4"></i>
+					</div>
+				</div>
+			</div><!-- .col-md-8 end -->
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				<div id="testimonial-carousel3" class="carousel-dots">
+					<!-- Testimonial #1 -->
+					<div class="testimonial-panel">
+						<div class="testimonial--meta-img">
+							<img src="assets/images/testimonial/1.png" alt="Testimonial Author">
+						</div>
+						<div class="testimonial--body">
+							<p>Whole is the most impressive & great media agencies I've ever seen. From the intuitive interface to the powerful tools they provide to me!</p>
+						</div><!-- .testimonial-body end -->
+						<div class="testimonial--icon"></div><!-- .testimonial-icon end -->
+						<div class="testimonial--meta">
+							<h4>Mahmoud Baghagho</h4>
+							<p>7oroof Agency</p>
+						</div><!-- .testimonial-meta end -->
+					</div><!-- .testimonial-panel end -->
+
+					<!-- Testimonial # -->
+					<div class="testimonial-panel">
+						<div class="testimonial--meta-img">
+							<img src="assets/images/testimonial/2.png" alt="Testimonial Author">
+						</div>
+						<div class="testimonial--body">
+							<p>My project was a simple task, but the persistence & determination of the team turned it into a great project which make me happy!</p>
+						</div><!-- .testimonial-body end -->
+						<div class="testimonial--icon"></div><!-- .testimonial-icon end -->
+						<div class="testimonial--meta">
+
+							<h4>ayman fikry</h4>
+							<p>zytheme</p>
+						</div><!-- .testimonial-meta end -->
+					</div><!-- .testimonial-panel end -->
+
+					<!-- Testimonial #1 -->
+					<div class="testimonial-panel">
+						<div class="testimonial--meta-img">
+								<img src="assets/images/testimonial/3.png" alt="Testimonial Author">
+							</div>
+						<div class="testimonial--body">
+							<p>In my job as social media strategist, I've tried every analytics product on the market and when I came across whole, I was blown away!</p>
+						</div><!-- .testimonial-body end -->
+						<div class="testimonial--icon"></div><!-- .testimonial-icon end -->
+						<div class="testimonial--meta">
+							<h4>Fouad badawy</h4>
+							<p>Tie Labs Inc</p>
+						</div><!-- .testimonial-meta end -->
+					</div><!-- .testimonial-panel end -->
 
 
+					<!-- Testimonial #1 -->
+					<div class="testimonial-panel">
+						<div class="testimonial--meta-img">
+								<img src="assets/images/testimonial/4.png" alt="Testimonial Author">
+							</div>
+						<div class="testimonial--body">
+							<p>In my job as social media strategist, I've tried every analytics product on the market and when I came across whole, I was blown away!</p>
+						</div><!-- .testimonial-body end -->
+						<div class="testimonial--icon"></div><!-- .testimonial-icon end -->
+						<div class="testimonial--meta">
+							<h4>Mostafa Mabrook</h4>
+							<p>Code 125</p>
+						</div><!-- .testimonial-meta end -->
+					</div><!-- .testimonial-panel end -->
+				</div>
+			</div><!-- .col-md-12 end -->
+		</div><!-- .row end -->
+	</div><!-- .container end -->
+</section><!-- .testimonial3 end -->
 
-            <div class="row">
+<!-- Clients Carousel Section
+============================================= -->
+<section id="clients" class="clients clients-carousel bg-white">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12">
+			<div class="carousel carousel-dots" data-slide="6" data-slide-res="2" data-autoplay="false" data-nav="false" data-dots="false" data-space="30" data-loop="true" data-speed="800">
+			<!-- Client #1 -->
+				<div class="client">
+					<img class="center-block" src="assets/images/clients/1.png" alt="client">
+				</div>
 
-                <div class="col-md-12 ">
-                    <!-- BEGIN Portlet PORTLET-->
-                    <div class="portlet box blue">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                <i class="fa fa-gift"></i>announcements </div>
-                            <ul class="nav nav-tabs">
-                                <li>
-                                    <a href="#portlet_tab3" data-toggle="tab"> Public Notice</a>
-                                </li>
-                                <li>
-                                    <a href="#portlet_tab2" data-toggle="tab"> Missing persons </a>
-                                </li>
-                                <li class="active">
-                                    <a href="#portlet_tab1" data-toggle="tab"> Death announcements</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="portlet-body">
-                            <div class="scroller" style="height:200px" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="portlet_tab1">
-                                    <p> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum
-                                        zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.ut
-                                        laoreet dolore magna ut laoreet dolore magna. ut laoreet dolore magna. ut laoreet dolore magna. </p>
-                                        <!-- action-->
-                                        <!-- <div class="actions pull-right">
-                                            <a href="javascript:;" class="btn blue btn-sm">
-                                                <i class="fa fa-pencil"></i> Edit </a>
-                                            <div class="btn-group">
-                                                <a class="btn btn-sm green" href="javascript:;" data-toggle="dropdown">
-                                                    <i class="fa fa-user"></i> User
-                                                    <i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="fa fa-pencil"></i> Edit </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="fa fa-trash-o"></i> Delete </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="fa fa-ban"></i> Ban </a>
-                                                    </li>
-                                                    <li class="divider"> </li>
-                                                    <li>
-                                                        <a href="javascript:;"> Make admin </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div> -->
-                                        <!-- action-->
-                                        <p> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum
-                                            zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.ut
-                                            laoreet dolore magna ut laoreet dolore magna. ut laoreet dolore magna. ut laoreet dolore magna. </p>
-                                            <p> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum
-                                                zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.ut
-                                                laoreet dolore magna ut laoreet dolore magna. ut laoreet dolore magna. ut laoreet dolore magna. </p>
-                                                <p> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum
-                                                    zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.ut
-                                                    laoreet dolore magna ut laoreet dolore magna. ut laoreet dolore magna. ut laoreet dolore magna. </p>
-                                </div>
-                                <div class="tab-pane" id="portlet_tab2">
-                                    <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                                        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                                        aliquyam erat, sed diam voluptua. At vero eos et accusam et justo. </p>
-                                </div>
-                                <div class="tab-pane" id="portlet_tab3">
-                                    <p> Ut wisi enim ad btn-smm veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-                                        consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. </p>
-                                </div>
-                            </div>
-                            <!-- action-->
-                            <!-- <div class="actions pull-right">
-                                <a href="javascript:;" class="btn blue btn-sm">
-                                    <i class="fa fa-pencil"></i> Edit </a>
-                                <div class="btn-group">
-                                    <a class="btn btn-sm green" href="javascript:;" data-toggle="dropdown">
-                                        <i class="fa fa-user"></i> User
-                                        <i class="fa fa-angle-down"></i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li>
-                                            <a href="javascript:;">
-                                                <i class="fa fa-pencil"></i> Edit </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                                <i class="fa fa-trash-o"></i> Delete </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;">
-                                                <i class="fa fa-ban"></i> Ban </a>
-                                        </li>
-                                        <li class="divider"> </li>
-                                        <li>
-                                            <a href="javascript:;"> Make admin </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div> -->
-                            <!-- action-->
-                        </div>
-                    </div>
-                </div>
-            </div>
+			<!-- Client #2 -->
+				<div class="client">
+					<img class="center-block" src="assets/images/clients/2.png" alt="client">
+				</div>
 
-        </div>
-        <!-- END CONTENT BODY -->
-    </div>
-    <!-- END CONTENT -->
-    <!-- BEGIN QUICK SIDEBAR -->
-    <a href="javascript:;" class="page-quick-sidebar-toggler">
-        <i class="icon-login"></i>
-    </a>
-    <div class="page-quick-sidebar-wrapper" data-close-on-body-click="false">
-        <div class="page-quick-sidebar">
-            <ul class="nav nav-tabs">
-                <li class="active">
-                    <a href="javascript:;" data-target="#quick_sidebar_tab_1" data-toggle="tab"> Users
-                        <span class="badge badge-danger">2</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;" data-target="#quick_sidebar_tab_2" data-toggle="tab"> Alerts
-                        <span class="badge badge-success">7</span>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> More
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul class="dropdown-menu pull-right">
-                        <li>
-                            <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
-                                <i class="icon-bell"></i> Alerts </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
-                                <i class="icon-info"></i> Notifications </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
-                                <i class="icon-speech"></i> Activities </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="javascript:;" data-target="#quick_sidebar_tab_3" data-toggle="tab">
-                                <i class="icon-settings"></i> Settings </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <div class="tab-content">
-                <div class="tab-pane active page-quick-sidebar-chat" id="quick_sidebar_tab_1">
-                    <div class="page-quick-sidebar-chat-users" data-rail-color="#ddd" data-wrapper-class="page-quick-sidebar-list">
-                        <h3 class="list-heading">Staff</h3>
-                        <ul class="media-list list-items">
-                            <li class="media">
-                                <div class="media-status">
-                                    <span class="badge badge-success">8</span>
-                                </div>
-                                <img class="media-object" src="../assets/layouts/layout/img/avatar3.jpg" alt="...">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Bob Nilson</h4>
-                                    <div class="media-heading-sub"> Project Manager </div>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <img class="media-object" src="../assets/layouts/layout/img/avatar1.jpg" alt="...">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Nick Larson</h4>
-                                    <div class="media-heading-sub"> Art Director </div>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <div class="media-status">
-                                    <span class="badge badge-danger">3</span>
-                                </div>
-                                <img class="media-object" src="../assets/layouts/layout/img/avatar4.jpg" alt="...">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Deon Hubert</h4>
-                                    <div class="media-heading-sub"> CTO </div>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <img class="media-object" src="../assets/layouts/layout/img/avatar2.jpg" alt="...">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Ella Wong</h4>
-                                    <div class="media-heading-sub"> CEO </div>
-                                </div>
-                            </li>
-                        </ul>
-                        <h3 class="list-heading">Customers</h3>
-                        <ul class="media-list list-items">
-                            <li class="media">
-                                <div class="media-status">
-                                    <span class="badge badge-warning">2</span>
-                                </div>
-                                <img class="media-object" src="../assets/layouts/layout/img/avatar6.jpg" alt="...">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Lara Kunis</h4>
-                                    <div class="media-heading-sub"> CEO, Loop Inc </div>
-                                    <div class="media-heading-small"> Last seen 03:10 AM </div>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <div class="media-status">
-                                    <span class="label label-sm label-success">new</span>
-                                </div>
-                                <img class="media-object" src="../assets/layouts/layout/img/avatar7.jpg" alt="...">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Ernie Kyllonen</h4>
-                                    <div class="media-heading-sub"> Project Manager,
-                                        <br> SmartBizz PTL </div>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <img class="media-object" src="../assets/layouts/layout/img/avatar8.jpg" alt="...">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Lisa Stone</h4>
-                                    <div class="media-heading-sub"> CTO, Keort Inc </div>
-                                    <div class="media-heading-small"> Last seen 13:10 PM </div>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <div class="media-status">
-                                    <span class="badge badge-success">7</span>
-                                </div>
-                                <img class="media-object" src="../assets/layouts/layout/img/avatar9.jpg" alt="...">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Deon Portalatin</h4>
-                                    <div class="media-heading-sub"> CFO, H&D LTD </div>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <img class="media-object" src="../assets/layouts/layout/img/avatar10.jpg" alt="...">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Irina Savikova</h4>
-                                    <div class="media-heading-sub"> CEO, Tizda Motors Inc </div>
-                                </div>
-                            </li>
-                            <li class="media">
-                                <div class="media-status">
-                                    <span class="badge badge-danger">4</span>
-                                </div>
-                                <img class="media-object" src="../assets/layouts/layout/img/avatar11.jpg" alt="...">
-                                <div class="media-body">
-                                    <h4 class="media-heading">Maria Gomez</h4>
-                                    <div class="media-heading-sub"> Manager, Infomatic Inc </div>
-                                    <div class="media-heading-small"> Last seen 03:10 AM </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="page-quick-sidebar-item">
-                        <div class="page-quick-sidebar-chat-user">
-                            <div class="page-quick-sidebar-nav">
-                                <a href="javascript:;" class="page-quick-sidebar-back-to-list">
-                                    <i class="icon-arrow-left"></i>Back</a>
-                            </div>
-                            <div class="page-quick-sidebar-chat-user-messages">
-                                <div class="post out">
-                                    <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar3.jpg" />
-                                    <div class="message">
-                                        <span class="arrow"></span>
-                                        <a href="javascript:;" class="name">Bob Nilson</a>
-                                        <span class="datetime">20:15</span>
-                                        <span class="body"> When could you send me the report ? </span>
-                                    </div>
-                                </div>
-                                <div class="post in">
-                                    <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar2.jpg" />
-                                    <div class="message">
-                                        <span class="arrow"></span>
-                                        <a href="javascript:;" class="name">Ella Wong</a>
-                                        <span class="datetime">20:15</span>
-                                        <span class="body"> Its almost done. I will be sending it shortly </span>
-                                    </div>
-                                </div>
-                                <div class="post out">
-                                    <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar3.jpg" />
-                                    <div class="message">
-                                        <span class="arrow"></span>
-                                        <a href="javascript:;" class="name">Bob Nilson</a>
-                                        <span class="datetime">20:15</span>
-                                        <span class="body"> Alright. Thanks! :) </span>
-                                    </div>
-                                </div>
-                                <div class="post in">
-                                    <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar2.jpg" />
-                                    <div class="message">
-                                        <span class="arrow"></span>
-                                        <a href="javascript:;" class="name">Ella Wong</a>
-                                        <span class="datetime">20:16</span>
-                                        <span class="body"> You are most welcome. Sorry for the delay. </span>
-                                    </div>
-                                </div>
-                                <div class="post out">
-                                    <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar3.jpg" />
-                                    <div class="message">
-                                        <span class="arrow"></span>
-                                        <a href="javascript:;" class="name">Bob Nilson</a>
-                                        <span class="datetime">20:17</span>
-                                        <span class="body"> No probs. Just take your time :) </span>
-                                    </div>
-                                </div>
-                                <div class="post in">
-                                    <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar2.jpg" />
-                                    <div class="message">
-                                        <span class="arrow"></span>
-                                        <a href="javascript:;" class="name">Ella Wong</a>
-                                        <span class="datetime">20:40</span>
-                                        <span class="body"> Alright. I just emailed it to you. </span>
-                                    </div>
-                                </div>
-                                <div class="post out">
-                                    <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar3.jpg" />
-                                    <div class="message">
-                                        <span class="arrow"></span>
-                                        <a href="javascript:;" class="name">Bob Nilson</a>
-                                        <span class="datetime">20:17</span>
-                                        <span class="body"> Great! Thanks. Will check it right away. </span>
-                                    </div>
-                                </div>
-                                <div class="post in">
-                                    <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar2.jpg" />
-                                    <div class="message">
-                                        <span class="arrow"></span>
-                                        <a href="javascript:;" class="name">Ella Wong</a>
-                                        <span class="datetime">20:40</span>
-                                        <span class="body"> Please let me know if you have any comment. </span>
-                                    </div>
-                                </div>
-                                <div class="post out">
-                                    <img class="avatar" alt="" src="../assets/layouts/layout/img/avatar3.jpg" />
-                                    <div class="message">
-                                        <span class="arrow"></span>
-                                        <a href="javascript:;" class="name">Bob Nilson</a>
-                                        <span class="datetime">20:17</span>
-                                        <span class="body"> Sure. I will check and buzz you if anything needs to be corrected. </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="page-quick-sidebar-chat-user-form">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Type a message here...">
-                                    <div class="input-group-btn">
-                                        <button type="button" class="btn green">
-                                            <i class="icon-paper-clip"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane page-quick-sidebar-alerts" id="quick_sidebar_tab_2">
-                    <div class="page-quick-sidebar-alerts-list">
-                        <h3 class="list-heading">General</h3>
-                        <ul class="feeds list-items">
-                            <li>
-                                <div class="col1">
-                                    <div class="cont">
-                                        <div class="cont-col1">
-                                            <div class="label label-sm label-info">
-                                                <i class="fa fa-check"></i>
-                                            </div>
-                                        </div>
-                                        <div class="cont-col2">
-                                            <div class="desc"> You have 4 pending tasks.
-                                                <span class="label label-sm label-warning "> Take action
-                                                    <i class="fa fa-share"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <div class="date"> Just now </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="javascript:;">
-                                    <div class="col1">
-                                        <div class="cont">
-                                            <div class="cont-col1">
-                                                <div class="label label-sm label-success">
-                                                    <i class="fa fa-bar-chart-o"></i>
-                                                </div>
-                                            </div>
-                                            <div class="cont-col2">
-                                                <div class="desc"> Finance Report for year 2013 has been released. </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col2">
-                                        <div class="date"> 20 mins </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <div class="col1">
-                                    <div class="cont">
-                                        <div class="cont-col1">
-                                            <div class="label label-sm label-danger">
-                                                <i class="fa fa-user"></i>
-                                            </div>
-                                        </div>
-                                        <div class="cont-col2">
-                                            <div class="desc"> You have 5 pending membership that requires a quick review. </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <div class="date"> 24 mins </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="col1">
-                                    <div class="cont">
-                                        <div class="cont-col1">
-                                            <div class="label label-sm label-info">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </div>
-                                        </div>
-                                        <div class="cont-col2">
-                                            <div class="desc"> New order received with
-                                                <span class="label label-sm label-success"> Reference Number: DR23923 </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <div class="date"> 30 mins </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="col1">
-                                    <div class="cont">
-                                        <div class="cont-col1">
-                                            <div class="label label-sm label-success">
-                                                <i class="fa fa-user"></i>
-                                            </div>
-                                        </div>
-                                        <div class="cont-col2">
-                                            <div class="desc"> You have 5 pending membership that requires a quick review. </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <div class="date"> 24 mins </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="col1">
-                                    <div class="cont">
-                                        <div class="cont-col1">
-                                            <div class="label label-sm label-info">
-                                                <i class="fa fa-bell-o"></i>
-                                            </div>
-                                        </div>
-                                        <div class="cont-col2">
-                                            <div class="desc"> Web server hardware needs to be upgraded.
-                                                <span class="label label-sm label-warning"> Overdue </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <div class="date"> 2 hours </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="javascript:;">
-                                    <div class="col1">
-                                        <div class="cont">
-                                            <div class="cont-col1">
-                                                <div class="label label-sm label-default">
-                                                    <i class="fa fa-briefcase"></i>
-                                                </div>
-                                            </div>
-                                            <div class="cont-col2">
-                                                <div class="desc"> IPO Report for year 2013 has been released. </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col2">
-                                        <div class="date"> 20 mins </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <h3 class="list-heading">System</h3>
-                        <ul class="feeds list-items">
-                            <li>
-                                <div class="col1">
-                                    <div class="cont">
-                                        <div class="cont-col1">
-                                            <div class="label label-sm label-info">
-                                                <i class="fa fa-check"></i>
-                                            </div>
-                                        </div>
-                                        <div class="cont-col2">
-                                            <div class="desc"> You have 4 pending tasks.
-                                                <span class="label label-sm label-warning "> Take action
-                                                    <i class="fa fa-share"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <div class="date"> Just now </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="javascript:;">
-                                    <div class="col1">
-                                        <div class="cont">
-                                            <div class="cont-col1">
-                                                <div class="label label-sm label-danger">
-                                                    <i class="fa fa-bar-chart-o"></i>
-                                                </div>
-                                            </div>
-                                            <div class="cont-col2">
-                                                <div class="desc"> Finance Report for year 2013 has been released. </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col2">
-                                        <div class="date"> 20 mins </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <div class="col1">
-                                    <div class="cont">
-                                        <div class="cont-col1">
-                                            <div class="label label-sm label-default">
-                                                <i class="fa fa-user"></i>
-                                            </div>
-                                        </div>
-                                        <div class="cont-col2">
-                                            <div class="desc"> You have 5 pending membership that requires a quick review. </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <div class="date"> 24 mins </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="col1">
-                                    <div class="cont">
-                                        <div class="cont-col1">
-                                            <div class="label label-sm label-info">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </div>
-                                        </div>
-                                        <div class="cont-col2">
-                                            <div class="desc"> New order received with
-                                                <span class="label label-sm label-success"> Reference Number: DR23923 </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <div class="date"> 30 mins </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="col1">
-                                    <div class="cont">
-                                        <div class="cont-col1">
-                                            <div class="label label-sm label-success">
-                                                <i class="fa fa-user"></i>
-                                            </div>
-                                        </div>
-                                        <div class="cont-col2">
-                                            <div class="desc"> You have 5 pending membership that requires a quick review. </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <div class="date"> 24 mins </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="col1">
-                                    <div class="cont">
-                                        <div class="cont-col1">
-                                            <div class="label label-sm label-warning">
-                                                <i class="fa fa-bell-o"></i>
-                                            </div>
-                                        </div>
-                                        <div class="cont-col2">
-                                            <div class="desc"> Web server hardware needs to be upgraded.
-                                                <span class="label label-sm label-default "> Overdue </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <div class="date"> 2 hours </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="javascript:;">
-                                    <div class="col1">
-                                        <div class="cont">
-                                            <div class="cont-col1">
-                                                <div class="label label-sm label-info">
-                                                    <i class="fa fa-briefcase"></i>
-                                                </div>
-                                            </div>
-                                            <div class="cont-col2">
-                                                <div class="desc"> IPO Report for year 2013 has been released. </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col2">
-                                        <div class="date"> 20 mins </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="tab-pane page-quick-sidebar-settings" id="quick_sidebar_tab_3">
-                    <div class="page-quick-sidebar-settings-list">
-                        <h3 class="list-heading">General Settings</h3>
-                        <ul class="list-items borderless">
-                            <li> Enable Notifications
-                                <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="success" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
-                            <li> Allow Tracking
-                                <input type="checkbox" class="make-switch" data-size="small" data-on-color="info" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
-                            <li> Log Errors
-                                <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="danger" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
-                            <li> Auto Sumbit Issues
-                                <input type="checkbox" class="make-switch" data-size="small" data-on-color="warning" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
-                            <li> Enable SMS Alerts
-                                <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="success" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
-                        </ul>
-                        <h3 class="list-heading">System Settings</h3>
-                        <ul class="list-items borderless">
-                            <li> Security Level
-                                <select class="form-control input-inline input-sm input-small">
-                                    <option value="1">Normal</option>
-                                    <option value="2" selected>Medium</option>
-                                    <option value="e">High</option>
-                                </select>
-                            </li>
-                            <li> Failed Email Attempts
-                                <input class="form-control input-inline input-sm input-small" value="5" /> </li>
-                            <li> Secondary SMTP Port
-                                <input class="form-control input-inline input-sm input-small" value="3560" /> </li>
-                            <li> Notify On System Error
-                                <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="danger" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
-                            <li> Notify On SMTP Error
-                                <input type="checkbox" class="make-switch" checked data-size="small" data-on-color="warning" data-on-text="ON" data-off-color="default" data-off-text="OFF"> </li>
-                        </ul>
-                        <div class="inner-content">
-                            <button class="btn btn-success">
-                                <i class="icon-settings"></i> Save Changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- END QUICK SIDEBAR -->
-</div>
+			<!-- Client #3 -->
+				<div class="client">
+					<img class="center-block" src="assets/images/clients/3.png" alt="client">
+				</div>
 
-@endsection
+			<!-- Client #4 -->
+				<div class="client">
+					<img class="center-block" src="assets/images/clients/4.png" alt="client">
+				</div>
+
+			<!-- Client #5 -->
+				<div class="client">
+					<img class="center-block" src="assets/images/clients/5.png" alt="client">
+				</div>
+
+			<!-- Client #6 -->
+				<div class="client">
+					<img class="center-block" src="assets/images/clients/6.png" alt="client">
+				</div>
+				</div>
+			</div><!-- .col-md-12 end -->
+		</div>
+		<!-- .row end -->
+	</div>
+	<!-- .container end -->
+</section>
+<!-- #clients end -->
+
+<!-- Banner #2
+============================================= -->
+<section id="banner2" class="banner banner-2 skills skills-2 pt-0 pb-0">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-6 pr-0 pl-0">
+				<div class="col-img  bg-overlay bg-overlay-theme">
+					<div class="bg-section">
+						<img src= "assets/images/banners/2.jpg" alt="Background"/>
+					</div>
+					<div class="row mb-50 pt-100">
+			<!-- Panel #1 -->
+			<div class="col-xs-12 col-sm-6 col-md-6">
+				<div class="feature-panel">
+					<div class="feature--icon">
+						<i class="lnr lnr-tablet"></i>
+					</div>
+					<div class="feature--content">
+						<h3>Fully Responsive</h3>
+						<p>Whole Graphic design is a process of visual and problem solving through the use of type, space, image & color, so don't be worry we care!</p>
+					</div>
+				</div><!-- .feature-panel end -->
+			</div><!-- .col-md-4 end -->
+
+			<!-- Panel #2 -->
+			<div class="col-xs-12 col-sm-6 col-md-6">
+				<div class="feature-panel">
+					<div class="feature--icon">
+						<i class="lnr lnr-bullhorn"></i>
+					</div>
+					<div class="feature--content">
+						<h3>Free Updates</h3>
+						<p>Whole impresses you with the fully highly customization. We did it in a combination of very clean and flexible design.</p>
+					</div>
+				</div><!-- .feature-panel end -->
+			</div><!-- .col-md-4 end -->
+
+			</div><!-- .row end -->
+			<div class="row">
+			<!-- Panel #3 -->
+			<div class="col-xs-12 col-sm-6 col-md-6">
+				<div class="feature-panel">
+					<div class="feature--icon">
+						<i class="lnr lnr-cog"></i>
+					</div>
+					<div class="feature--content">
+						<h3>Powerful Features</h3>
+						<p>Whole impresses you with the fully responsiveness. We did it in a combination of very clean and flexible design.</p>
+					</div>
+				</div><!-- .feature-panel end -->
+			</div><!-- .col-md-4 end -->
+
+			<!-- Panel #4 -->
+			<div class="col-xs-12 col-sm-6 col-md-6">
+				<div class="feature-panel">
+					<div class="feature--icon">
+						<i class="lnr lnr-rocket"></i>
+					</div>
+					<div class="feature--content">
+						<h3>Friendly Support</h3>
+						<p>Whole Graphic design is a process of visual and problem solving through the use of type, space, image & color, so don't be worry we care!</p>
+					</div>
+				</div><!-- .feature-panel end -->
+			</div><!-- .col-md-4 end -->
+		</div><!-- .row end -->
+				</div>
+			</div><!-- .col-md-6 end-->
+			<div class="col-xs-12 col-sm-12 col-md-6 col-content pl-100">
+				<div class="heading heading-8 mb-50">
+					<h2 class="heading--title">Imagine &amp; Create,<br>We make it so simple!</h2>
+					<p class="heading--desc mb-20">We are Whole business, our strategists will help you set an objective and choose your tools, developing a plan that is custom built for your business.</p>
+					<div class="divider--line">
+					<i class="divider divider--1"></i>
+					<i class="divider divider--2"></i>
+					<i class="divider divider--3"></i>
+					<i class="divider divider--4"></i>
+				</div>
+				</div><!-- .heading end -->
+				<!-- progress 1 -->
+				<div class="progressbar">
+					<div class="progress-title">
+						<span class="title">Marketing</span>
+						<span class="value">95%</span>
+					</div>
+					<div class="progress">
+						<div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+						</div>
+					</div>
+				</div>
+				<!-- .progressbar end -->
+
+				<!-- progress 2 -->
+				<div class="progressbar">
+					<div class="progress-title">
+						<span class="title">Development</span>
+						<span class="value">87%</span>
+					</div>
+					<div class="progress">
+						<div class="progress-bar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100">
+						</div>
+					</div>
+				</div>
+				<!-- .progressbar end -->
+
+				<!-- progress 3 -->
+				<div class="progressbar">
+					<div class="progress-title">
+						<span class="title">User Experience</span>
+						<span class="value">81%</span>
+					</div>
+					<div class="progress">
+						<div class="progress-bar" role="progressbar" aria-valuenow="81" aria-valuemin="0" aria-valuemax="100">
+						</div>
+					</div>
+				</div>
+				<!-- .progressbar end -->
+
+				<!-- progress 4 -->
+				<div class="progressbar">
+					<div class="progress-title">
+						<span class="title">Branding</span>
+						<span class="value">70%</span>
+					</div>
+					<div class="progress">
+						<div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+						</div>
+					</div>
+				</div>
+				<!-- .progressbar end -->
+			</div>
+		</div>
+		<!-- .row end -->
+	</div>
+	<!-- .container end -->
+</section>
+<!-- #banner2 end -->
+
+<!-- Contact #2
+============================================= -->
+<section id="contact2" class="contact contact-2 pb-0 pt-0">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-6 bg-white col-content">
+				<div class="heading heading-8 mb-30">
+					<h2 class="heading--title">Need Help!<br> Write To Us Now?!! </h2>
+					<div class="divider--line divider--line-2">
+						<i class="divider divider--1"></i>
+						<i class="divider divider--2"></i>
+						<i class="divider divider--3"></i>
+						<i class="divider divider--4"></i>
+						<i class="divider divider--5"></i>
+						<i class="divider divider--6"></i>
+						<i class="divider divider--7"></i>
+					</div>
+				</div><!-- .heading end -->
+				<div class="contact-form">
+					<div class="notes">Kindly fill out all this required fields.</div>
+					<form class="mb-0">
+						<div class="row">
+							<div class="col-md-6">
+								<input type="text" class="form-control" name="contact-name" id="name" placeholder="Name" required>
+							</div>
+							<div class="col-md-6">
+								<input type="email" class="form-control" name="contact-email" id="email" placeholder="Email" required>
+							</div>
+							<div class="col-md-12">
+								<textarea class="form-control" name="contact-message" id="message" rows="2" placeholder="Message" required></textarea>
+							</div>
+							<div class="col-md-12">
+								<input type="submit" value="Send Message" name="submit" class="btn btn--secondary btn--block">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div><!-- .col-md-6 end -->
+			<div class="col-xs-12  col-sm-12  col-md-6 pr-0 pl-0">
+				<div id="googleMap" style="width:100%;height:686px;">
+				</div>
+				<script src="assets/js/jquery-2.2.4.min.js"></script>
+				<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&amp;key=AIzaSyCiRALrXFl5vovX0hAkccXXBFh7zP8AOW8"></script>
+				<script type="text/javascript" src="assets/js/plugins/jquery.gmap.min.js"></script>
+				<script type="text/javascript">
+					$('#googleMap').gMap({
+						address: "121 King St,Melbourne, Australia",
+						zoom: 15,
+						markers:[
+							{
+								address: "Melbourne, Australia",
+								maptype:'ROADMAP',
+								icon: {
+								image: "assets/images/gmap/maker.png",
+								iconsize: [35, 35],
+								iconanchor: [17,35]
+							}
+							}
+						]
+					});
+				</script>
+			</div><!-- .col-md-6 end -->
+		</div>
+	</div>
+</section>
+<!-- #contact2 end -->
+<!-- Footer #1
+============================================= -->
+<footer id="footer" class="footer footer-1">
+	<!-- Widget Section
+	============================================= -->
+	<div class="footer-widget">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-3 footer--widget-about">
+					<div class="footer--widget-title">
+						<h5>About Us</h5>
+					</div>
+					<div class="footer--widget-content">
+						<p>We are Whole business, our strategists will help you set an objective and choose your tools, developing a plan that built for your business. </p>
+						<ul class="list-unstyled mb-0">
+							<li><span>Call:</span> 002 01065370701</li>
+							<li><span>Email:</span> 7oroof@7oroof.com</li>
+							<li><span>Visit:</span> 22 Albahr St, Tanta, Egypt</li>
+						</ul>
+					</div>
+				</div><!-- .col-md-3 end -->
+				<div class="col-xs-12 col-sm-6 col-md-3 footer--widget-recent">
+					<div class="footer--widget-title">
+						<h5>Recent Posts</h5>
+					</div>
+					<div class="footer--widget-content">
+						<div class="entry">
+							<div class="entry--meta">Oct 15, 2016</div>
+							<div class="entry--title">
+								<a href="#">Four ways to cheer yourself up on the Blue Monday!</a>
+							</div>
+						</div><!-- .entry end -->
+						<div class="entry">
+							<div class="entry--meta">Oct 10, 2016</div>
+							<div class="entry--title">
+								<a href="#">Old cameras can capture images better than nowdays camera!</a>
+							</div>
+						</div><!-- .entry end -->
+					</div>
+				</div><!-- .col-md-3 end -->
+				<div class="col-xs-12 col-sm-6 col-md-3 footer--widget-newsletter">
+					<div class="footer--widget-title">
+						<h5>Stay Updated</h5>
+					</div>
+					<div class="footer--widget-content">
+						<p>Don’t miss to follow us & subscribe to our new feeds, kindly fill the form below.</p>
+						<form class="form-newsletter">
+							<input type="email" name="email" class="form-control" placeholder="Subscribe Our Newsletter">
+							<button type="submit"><i class="fa fa-long-arrow-right"></i></button>
+						</form>
+						<div class="clearfix"></div>
+						<div class="social">
+							<a class="share-facebook" href="#"><i class="fa fa-facebook"></i></a>
+							<a class="share-twitter" href="#"><i class="fa fa-twitter"></i></a>
+							<a class="share-instagram" href="#"><i class="fa fa-instagram"></i></a>
+							<a class="share-linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+						</div>
+					</div>
+				</div><!-- .col-md-3 end -->
+				<div class="col-xs-12 col-sm-6 col-md-3 widget-instagram">
+					<div class="footer--widget-title">
+						<h5>Instagram</h5>
+					</div>
+					<div class="footer--widget-content">
+						<div id="instafeed" class="instafeed"></div>
+					</div>
+				</div><!-- .col-md-3 end -->
+			</div>
+		</div><!-- .container end -->
+	</div><!-- .footer-widget end -->
+
+	<!-- Copyrights
+	============================================= -->
+	<div class="footer--bar">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-5 col-md-6">
+					<div class="footer--copyright">
+						<span>&copy; 2017 Whole, With Love by</span> <a href="http://themeforest.net/user/7oroof/portfolio?ref=zytheme">7oroof.com</a>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-7 col-md-6">
+					<div class="footer--links pull-right pull-none-xs">
+						<ul class="list-inline mb-0">
+							<li><a href="#">About</a></li>
+							<li><a href="#">Blog</a></li>
+							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="#">Terms</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div><!-- .container end -->
+	</div><!-- .footer-copyright end -->
+</footer>
+ </div><!-- #wrapper end -->
+
+<!-- Footer Scripts
+============================================= -->
+<script src="{{asset('assets/js/jquery-2.2.4.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins.js')}}"></script>
+<script src="{{asset('assets/js/functions.js')}}"></script>
+</body>
+
+<!-- Mirrored from 7oroof.com/tfdemos/whole/home-personal.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Sep 2017 11:01:28 GMT -->
+</html>
