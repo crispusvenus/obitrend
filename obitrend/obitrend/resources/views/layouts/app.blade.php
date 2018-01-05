@@ -200,19 +200,19 @@
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                     <img alt="" class="img-circle" src="../assets/layouts/layout2/img/avatar3_small.jpg" />
                                     @if(Auth::check())
-                                        <span class="username username-hide-on-mobile"> {{Auth::user()->first_name}} </span>
+                                        <span class="username username-hide-on-mobile"> {{Auth::user()->first_name}}{{Auth::user()->other_names}} </span>
                                     @endif
                                     <i class="fa fa-angle-down"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-default">
                                     <li>
-                                        <a href="#">
+                                        <a href="{{ route('profile.edit') }}">
                                             <i class="icon-user"></i> My Profile </a>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <a href="#">
                                             <i class="icon-calendar"></i> Settings </a>
-                                    </li>
+                                    </li> -->
 
                                     @if(Auth::check())
                                         @if(Auth::user()->access_level == 1)

@@ -63,35 +63,39 @@ class AnnouncementController extends Controller
          // $filename = $request->file->getClientOriginalName();
          // $imagename = $request->image_path->getClientOriginalName();
          // $thumbname = $request->image_thumb->getClientOriginalName();
-          $path = $request->image_path->storeAs('public/id');
-          $file = $request->image_thumb->storeAs('public/upload');
-          $download = $request->file->storeAs('public/downloads');
+           $path = $request->image_path->store('public/id');
+           $file = $request->image_thumb->store('public/upload');
+           $download = $request->file->store('public/downloads');
       //creates announcements
-
-    //  $path = Storage::disk('public')->putfile('id',$request->file);
+      //
+      // $path = Storage::disk('public')->putfile('public/id',$request->image_path);
+      // $file = Storage::disk('public')->putfile('public/upload',$request->image_thumb);
+      // $download  = Storage::disk('public')->putfile('public/downloads',$request->file);
            Announcement::create(array(
                'content'=>Input::get('content'),
                'user_id'=>Auth::user()->id,
-               'type_of_announcement'=>Input::get('type_of_announcement'),
+               'type_of_announcement'=>Input::get('fullname'),
                'image_thumb'=>$file,
                'image_path'=>$path,
                'description'=>Input::get('description'),
                'country'=>Input::get('country'),
                'file_path'=>$download,
                'location'=>Input::get('location'),
-               'payment'=>Input::get('payment'),
+               'payment'=>Input::get('card_name'),
+                'days'=>Input::get('days'),
                'is_featured'=>0,
                'status'=>0,
-               'title'=>Input::get('title')
+               'title'=>Input::get('address')
 
              ));
              //if successful redirect to dashboard
-         return redirect()->route('client.index');
+         return redirect()->route('client.index')->with('message','request received successfully');
       }else{
-        Session::flash('fail','please upload a picture of your id');
-        return redirect()->back();
+
+        return redirect()->back()->with('message','please upload a picture of your id');
 
       }
+
 
   }
 
@@ -176,7 +180,7 @@ class AnnouncementController extends Controller
          return Image::make($image)->response();
 
     }
-    /* Fetch the artwork using the id */
+    /* Fetch the image using the id */
           public function avatar($id, Request $request){
 
 
@@ -188,7 +192,8 @@ class AnnouncementController extends Controller
            return Image::make($image)->response();
 
       }
-      /* Fetch the artwork using the id */
+
+      /* test download*/
             public function download(){
 
             // $pdf = PDF::loadView('client.index'); $requests = Notification::all();

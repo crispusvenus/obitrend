@@ -27,6 +27,7 @@ class CreateAnnouncementsTable extends Migration
             $table->integer('is_featured')->nullable();
             $table->string('title')->nullable();
             $table->integer('status')->nullable();
+            $table->integer('days')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

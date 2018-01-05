@@ -23,6 +23,7 @@ class Announcement extends Model
         'file_path',
         'payment',
         'status',
+        'days',
         'country',
         'is_featured',
         'title'

@@ -1154,7 +1154,7 @@
                             </div>
                         </div>
                         <div class="portlet-body form">
-                              <form class="form-horizontal" action="/announcements/make" id="submit_form" method="POST" enctype="multipart/form-data">
+                              <form class="form-horizontal" action="{{route('create.announcement')}}" id="submit_form" method="POST" enctype="multipart/form-data">
   {{ csrf_field() }}
                                 <div class="form-wizard">
                                     <div class="form-body">
@@ -1203,7 +1203,7 @@
                                                         <span class="required"> * </span>
                                                     </label>
                                                     <div class="col-md-4">
-                                                        <input type="text" class="form-control" name="title" />
+                                                        <input type="text" class="form-control" name="address" />
                                                         <span class="help-block"> Provide the title of your announcement </span>
                                                     </div>
                                                 </div>
@@ -1452,7 +1452,7 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-md-3">Announcement Type</label>
                                                     <div class="col-md-4">
-                                                        <select name="type_of_announcement" id="country_list" class="form-control">
+                                                        <select name="fullname" id="country_list" class="form-control">
                                                             <option value=""></option>
                                                             <option value="Deathannouncement">Death announcement</option>
                                                             <option value="Missingperson">Missing persons</option>
@@ -1518,8 +1518,18 @@
                                                         <span class="required"> * </span>
                                                     </label>
                                                     <div class="col-md-4">
-                                                        <input type="text" placeholder="" class="form-control" name="payment" />
+                                                        <input type="text" placeholder="" class="form-control" name="card_name" />
                                                         <span class="help-block"> </span>
+                                                    </div>
+                                                </div>
+
+                                                 <div class="form-group">
+                                                    <label class="control-label col-md-3">Number of days
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-4">
+
+                                                          <input type="number" min="1" name="days" >
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -1544,20 +1554,20 @@
 
                                             </div>
                                             <div class="tab-pane" id="tab4">
-                                                <h3 class="block">Confirm your account</h3>
-                                                <h4 class="form-section">Account</h4>
-                                                <!-- <div class="form-group">
+                                                <h3 class="block">Confirm your request</h3>
+                                                <h4 class="form-section">Request</h4>
+                                                 <div class="form-group">
                                                     <label class="control-label col-md-3">Username:</label>
                                                     <div class="col-md-4">
-                                                        <p class="form-control-static" data-display="username"> </p>
+                                                        <p class="form-control-static" data-display="username">{{Auth::user()->first_name}} {{Auth::user()->other_names}}  </p>
                                                     </div>
-                                                </div> -->
-                                                <!-- <div class="form-group">
-                                                    <label class="control-label col-md-3">Email:</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">Type of announcement:</label>
                                                     <div class="col-md-4">
-                                                        <p class="form-control-static" data-display="email"> </p>
+                                                        <p class="form-control-static" data-display="fullname"> </p>
                                                     </div>
-                                                </div> -->
+                                                </div>
                                                 <!-- <h4 class="form-section">Profile</h4>
                                                 <div class="form-group">
                                                     <label class="control-label col-md-3">Fullname:</label>
@@ -1577,37 +1587,37 @@
                                                         <p class="form-control-static" data-display="phone"> </p>
                                                     </div>
                                                 </div>
-                                                <!-- <div class="form-group">
-                                                    <label class="control-label col-md-3">Address:</label>
+                                                 <div class="form-group">
+                                                    <label class="control-label col-md-3">Title:</label>
                                                     <div class="col-md-4">
                                                         <p class="form-control-static" data-display="address"> </p>
                                                     </div>
-                                                </div> -->
+                                                </div>
                                                 <!-- <div class="form-group">
                                                     <label class="control-label col-md-3">City/Town:</label>
                                                     <div class="col-md-4">
                                                         <p class="form-control-static" data-display="city"> </p>
                                                     </div> -->
 
-                                                <div class="form-group">
+                                                <!-- <div class="form-group">
                                                     <label class="control-label col-md-3">Country:</label>
                                                     <div class="col-md-4">
                                                         <p class="form-control-static" data-display="country"> </p>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <!-- <div class="form-group">
                                                     <label class="control-label col-md-3">Remarks:</label>
                                                     <div class="col-md-4">
                                                         <p class="form-control-static" data-display="remarks"> </p>
                                                     </div>
                                                 </div> -->
-                                                <!-- <h4 class="form-section">Billing</h4>
+
                                                 <div class="form-group">
-                                                    <label class="control-label col-md-3">Card Holder Name:</label>
+                                                    <label class="control-label col-md-3">Payment Token:</label>
                                                     <div class="col-md-4">
                                                         <p class="form-control-static" data-display="card_name"> </p>
                                                     </div>
-                                                </div> -->
+                                                </div>
                                                 <!-- <div class="form-group">
                                                     <label class="control-label col-md-3">Card Number:</label>
                                                     <div class="col-md-4">

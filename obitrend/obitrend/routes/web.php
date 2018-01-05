@@ -39,14 +39,21 @@ Route::group(['middleware' => 'auth'], function()
     'uses' => 'ProfilesController@index',
     'as' => 'profile',
      ]);
-
+//fetches the edit page
      Route::get('/profile/edit/profile',[
-    'uses' => 'ProfilesController@edit',
+    'uses' => 'ProfileController@index',
     'as' => 'profile.edit'
     ]);
 
+  /*updates the avatar*/
+     Route::post('/profile/update/avatar',[
+    'uses' => 'ProfileController@avatar',
+    'as' => 'profile.avatar'
+    ]);
+
+//updates user profile
     Route::post('/profile/update/profile',[
-    'uses' => 'ProfilesController@update',
+    'uses' => 'ProfileController@update',
     'as' => 'profile.update'
     ]);
 
@@ -63,6 +70,7 @@ Route::group(['middleware' => 'auth'], function()
     'uses' => 'HomeController@index',
     'as' => 'client.index'
     ]);
+    //fetches the request as per the user's country
     Route::get('/announcements/view/myCountry', [
     'uses' => 'HomeController@my_country',
     'as' => 'client.country.view'
@@ -84,7 +92,7 @@ Route::group(['middleware' => 'auth'], function()
     'uses' => 'AnnouncementController@index',
     'as' => 'client.make'
     ]);
-  
+
     //fetches each announcement
     Route::get('/announcements/show/{id}', [
     'uses' => 'AnnouncementController@announcements',
