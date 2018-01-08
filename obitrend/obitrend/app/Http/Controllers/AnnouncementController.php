@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Storage;
 use InterImage;
 use Intervention\Image\ImageManagerStatic as Image;
 use Session;
-// use PDF;
+ use PDF;
 
 
 
@@ -58,7 +58,7 @@ class AnnouncementController extends Controller
 //   'description' => 'max:255',
 //    'image_path' => 'required|image',
 // ]);
-      if ($request->hasFile('image_path'))
+      if ($request->hasFile('image_path')&&$request->hasFile('image_thumb')&&$request->hasFile('file'))
       {
          // $filename = $request->file->getClientOriginalName();
          // $imagename = $request->image_path->getClientOriginalName();
@@ -90,13 +90,47 @@ class AnnouncementController extends Controller
              ));
              //if successful redirect to dashboard
          return redirect()->route('client.index')->with('message','request received successfully');
-      }else{
+      }elseif ($request->hasFile('image_path')&&$request->hasFile('image_thumb')) {
 
-        return redirect()->back()->with('message','please upload a picture of your id');
+           // $filename = $request->file->getClientOriginalName();
+           // $imagename = $request->image_path->getClientOriginalName();
+           // $thumbname = $request->image_thumb->getClientOriginalName();
+             $path = $request->image_path->store('public/id');
+              $file = $request->image_thumb->store('public/upload');
+            // $download = $request->file->store('public/downloads');
+        //creates announcements
+        //
+        // $path = Storage::disk('public')->putfile('public/id',$request->image_path);
+        // $file = Storage::disk('public')->putfile('public/upload',$request->image_thumb);
+        // $download  = Storage::disk('public')->putfile('public/downloads',$request->file);
+             Announcement::create(array(
+                 'content'=>Input::get('content'),
+                 'user_id'=>Auth::user()->id,
+                 'type_of_announcement'=>Input::get('fullname'),
+                 'image_thumb'=>$file,
+                 'image_path'=>$path,
+                 'description'=>Input::get('description'),
+                 'country'=>Input::get('country'),
+                 // 'file_path'=>$download,
+                 'location'=>Input::get('location'),
+                 'payment'=>Input::get('card_name'),
+                  'days'=>Input::get('days'),
+                 'is_featured'=>0,
+                 'status'=>0,
+                 'title'=>Input::get('address')
+
+               ));
+               //if successful redirect to dashboard
+
+         return redirect()->route('client.index')->with('message','request received successfully');
+      }
+      else{
+
+          return redirect()->back()->with('message','please upload a picture of your id');
 
       }
 
-
+        return redirect()->route('client.index')->with('message','request received successfully');
   }
 
 //creates tributes
@@ -139,7 +173,8 @@ class AnnouncementController extends Controller
       $comment =  Comment::with('user')->where('announcement_id',$id)->get();
 
      $requests = Notification::all();
-//return $comment[0];
+
+//return $time->diffForHumans();
  return view('client.view-each-announcements',['requests' => $requests, 'request' => $request ,'tribute' => $tribute  ,'comment' =>$comment ]);
 
   }

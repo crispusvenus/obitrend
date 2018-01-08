@@ -1089,7 +1089,7 @@
         <div class="page-content">
             <!-- BEGIN PAGE HEADER-->
             <!-- BEGIN THEME PANEL -->
-          
+
             <!-- END THEME PANEL -->
 
             <div class="page-bar">
@@ -1215,26 +1215,7 @@
 
                                             <div class="btn-group">  <a href="{{ route('client.each.announcement',$row->id) }}" class="btn blue btn-sm">
                                                   <i class="fa fa-eye"></i> View </a>
-                                                <!-- <a class="btn btn-sm green" href="javascript:;" data-toggle="dropdown">
-                                                    <i class="fa fa-user"></i> Share
-                                                    <i class="fa fa-angle-down"></i>
-                                                </a> -->
-                                                <!-- <ul class="dropdown-menu pull-right">
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="fa fa-facebook"></i> Facebook</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="fa fa-linkedin"></i> Linkedin </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:;">
-                                                            <i class="fa fa-twitter"></i> Twitter</a>
-                                                    </li>
-                                                    <li class="divider"> </li>
 
-                                                </ul> -->
 
                                             </div>
                                         </div><br/>
@@ -1244,32 +1225,26 @@
                                    @endif
                                 </div>
                                 <div class="tab-pane" id="portlet_tab3">
-                                    @if(count($all['public'])==0)
-                                      <div class="note note-success"><h3>No Public Notices</h3>  </div>
-
+                                  @if(count($all['public'])==0)
+                                  <div class="note note-success"><h3>No public announcements</h3>  </div>
                                      @else
-
-
                                   @foreach ($all['public'] as $row)
+                                    <div class ="col-lg-12">
                                   <div class ="col-lg-2 col-md-2 col-sm-2">
-                                    <!-- <img width="70%" src="{{ $row->image_path}}"  > -->
-                                      <img width="70%" src=" {{Storage::url($row->image_thumb)}}"
-                                       </div>
-
-                                  {{$row->title}}<br/>
-                                    <p>{{$row->description}}</p>
+                                      <img width="70%" src="{{Storage::url($row->image_thumb)}}" /></div>
+                                    {{$row->title}}<br/>
+                                    <p> {{$row->description}} </p>
                                         <div class="actions pull-right">
+                                            <a href="{{ route('client.each.announcement',$row->id) }}" class="btn blue btn-sm">
+                                                <i class="fa fa-eye"></i> View </a>
 
-                                            <div class="btn-group">
-
-                                              <a href="{{ route('client.each.announcement',$row->id) }}" class="btn blue btn-sm">
-                                                  <i class="fa fa-eye"></i> View </a>
-
-                                            </div>
                                         </div><br/>
                                         <hr/>
+                                        </div>
                                     @endforeach
-                                     @endif
+
+                                       @endif
+
                                 </div>
                                 <div class="tab-pane" id="portlet_tab4">
                               @if(count($all['anniversaries'])==0)

@@ -115,6 +115,8 @@ class AdminController extends Controller
       if($announcement){
         $announcement->is_featured = 1;
         $announcement->status = 1;
+        $announcement->is_featured_dirty =  \Carbon\Carbon::now();
+
         $announcement->save();
 
         return Redirect::to('/admin')->with('message','request approved successfully');

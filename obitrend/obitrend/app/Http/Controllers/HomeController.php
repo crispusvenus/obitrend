@@ -67,7 +67,7 @@ class HomeController extends Controller
 
            );
 
-    //    return count($all['public']);
+
     }
 
         public function my_country()
