@@ -229,11 +229,19 @@ class AnnouncementController extends Controller
       }
 
       /* test download*/
-            public function download(){
+          public function download($id, Request $request){
 
             // $pdf = PDF::loadView('client.index'); $requests = Notification::all();
+            // $path = storage_path($id);
+              $path = Storage::get($id);
 
-             return 0;
+         return response()->download($path);
+              // return $pdf->download('invoice.pdf');
+              // $pdf = PDF::loadView('pdfview');
+              // return $pdf->download($id);
+              // return response()->download(storage_path($id));
+
+
 
         }
 }

@@ -68,6 +68,13 @@ License: You must have a valid license purchased only from themeforest(the above
                     <button class="close" data-close="alert"></button>
                     <span> Enter any username and password. </span>
                 </div>
+                @if(Session::has('status'))
+                    <div class="alert alert-success"><em> {!! session('status') !!}</em></div>
+                @endif
+
+                          @if(Session::has('message'))
+                              <div class="alert alert-success"><em> {!! session('message') !!}</em></div>
+                          @endif
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 
                     <label class="control-label visible-ie8 visible-ie9">Username</label>
@@ -400,6 +407,10 @@ License: You must have a valid license purchased only from themeforest(the above
                         <option value="ZM">Zambia</option>
                         <option value="ZW">Zimbabwe</option>
                     </select>
+                    @if ($errors->has('my_country'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('my_country') }}</strong>
+                        </span>@endif
                 </div>
                 <p class="hint"> Enter your account details below: </p>
                 <!-- <div class="form-group">

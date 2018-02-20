@@ -18,6 +18,10 @@ Route::get('/', function () {
  Route::get('/about', 'LandingController@index')->name('about');
  Route::get('/pricing', 'LandingController@pricing')->name('pricing');
  Route::get('/', 'LandingController@welcome')->name('welcome');
+ //verify email route
+ Route::get('verifyEmailFirst', 'Auth\RegisterController@verifyEmailFirst')->name('verifyEmailFirst');
+ //send email token
+ Route::get('verify/{email}/{verifyToken}', 'Auth\RegisterController@sendEmailDone')->name('sendEmailDone');
 
  //  Route::post('/profile/edit/profile',[
  // 'uses' => 'LandingController@register',
@@ -132,7 +136,11 @@ Route::group(['middleware' => 'auth'], function()
     'uses' => 'AnnouncementController@create_comments',
     'as' => 'create.comments'
     ]);
-    Route::get('admin/pdf','AnnouncementController@download');
+    Route::get('/announcement/{id}/pdf', [
+    'uses' => 'AnnouncementController@download',
+    'as' => 'announcement.download'
+    ]);
+     // Route::get('announcements/{id}/pdf','AnnouncementController@download');
 
     //routes to extract images from storage
     Route::get('storage/upload/{id}','AnnouncementController@upload');

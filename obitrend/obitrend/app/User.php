@@ -28,6 +28,8 @@ class User extends Authenticatable
         'avatar',
         'account_status',
         'phone_number',
+        'verifyToken',
+        'status',
 
     ];
 

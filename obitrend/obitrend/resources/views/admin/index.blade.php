@@ -1089,7 +1089,7 @@
         <div class="page-content">
             <!-- BEGIN PAGE HEADER-->
             <!-- BEGIN THEME PANEL -->
-          
+
   @if(Session::has('message'))
       <div class="alert alert-success"><em> {!! session('message') !!}</em></div>
   @endif
@@ -1204,6 +1204,7 @@
                             <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                                 <thead>
                                     <tr>
+                                    
                                         <th>
                                             <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
                                                 <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" />
