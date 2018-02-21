@@ -162,11 +162,10 @@ return [
         Illuminate\Session\SessionServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
         Illuminate\View\ViewServiceProvider::class,
 
-
-        Barryvdh\DomPDF\ServiceProvider::class,
 
 
         /*
@@ -184,6 +183,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -234,7 +234,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
-         'PDF' =>  Barryvdh\DomPDF\Facade::class,
+         'PDF' => Barryvdh\DomPDF\Facade::class,
+         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
 
 
     ],

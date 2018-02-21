@@ -91,12 +91,12 @@ License: You must have a valid license purchased only from themeforest(the above
                     <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
                 </div>
                 <div class="login-options">
-                    <!-- <h4>Or login with</h4>
+                     <h4>Or login with</h4>
                     <ul class="social-icons">
                         <li>
-                            <a class="social-icon-color facebook" data-original-title="facebook" href="javascript:;"></a>
+                            <a class="social-icon-color facebook" data-original-title="facebook" href="{{ url('auth/facebook') }}"></a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a class="social-icon-color twitter" data-original-title="Twitter" href="javascript:;"></a>
                         </li>
                         <li>
@@ -104,8 +104,8 @@ License: You must have a valid license purchased only from themeforest(the above
                         </li>
                         <li>
                             <a class="social-icon-color linkedin" data-original-title="Linkedin" href="javascript:;"></a>
-                        </li>
-                    </ul> -->
+                        </li> -->
+                    </ul>
                 </div>
                 <div class="create-account">
                     <p>

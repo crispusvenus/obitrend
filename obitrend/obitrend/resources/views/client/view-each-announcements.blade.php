@@ -65,7 +65,8 @@
                               <li class="divider"> </li>
 
                               <li>
-                                  <a href="{{ route('announcement.download', $request[0]->file_path) }}" >Download euology </a>
+                                  <a href="{{ route('announcement.download', $request[0]->file_path) }}" download = " {{$request[0]->file_path}}
+                                    " >Download euology </a>
                               </li>
                                @endif
 

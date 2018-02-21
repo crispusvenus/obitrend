@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -36,4 +38,60 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    /**
+    * Redirect the user to the GitHub authentication page.
+    *
+    * @return \Illuminate\Http\Response
+    */
+   public function redirectToProvider()
+   {
+       return Socialite::driver('facebook')->redirect();
+   }
+
+   /**
+    * Obtain the user information from GitHub.
+    *
+    * @return \Illuminate\Http\Response
+    */
+   public function handleProviderCallback()
+   {
+
+     $userSocial = Socialite::driver('facebook')->user();
+
+
+     if($userSocial->email){
+       $findUser = User::whereEmail($userSocial->email)->first();
+
+
+       if($findUser){
+         Auth::login($userSocial);
+         return 'done with old';
+
+       }else{
+
+         $user = new User;
+         $user->fname =  $userSocial->name;
+         $user->lname =  $userSocial->name;
+         $user->email =  $userSocial->email;
+         $user->avatar =  $userSocial->avatar;
+         $user->gender =  0 ;
+         $user->remember_token =  $userSocial->token;
+         $user->password =  bcrypt(12345678);
+         $user->save();
+         Auth::login($userSocial);
+         return redirect('home')->with('success','sign up succesfull');
+
+       }
+
+
+
+     }
+
+     return redirect('/login')->with('message','please verify your email in facebook');
+
+
+
+
+   }
+
 }

@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//facebook login
+Route::get('auth/facebook', 'Auth\LoginController@redirectToProvider')->name('facebook.login');
+Route::get('auth/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 
  Route::get('/about', 'LandingController@index')->name('about');
  Route::get('/pricing', 'LandingController@pricing')->name('pricing');
@@ -136,15 +139,17 @@ Route::group(['middleware' => 'auth'], function()
     'uses' => 'AnnouncementController@create_comments',
     'as' => 'create.comments'
     ]);
-    Route::get('/announcement/{id}/pdf', [
+    Route::get('/storage/downloads/{id}', [
     'uses' => 'AnnouncementController@download',
     'as' => 'announcement.download'
     ]);
-     // Route::get('announcements/{id}/pdf','AnnouncementController@download');
+
 
     //routes to extract images from storage
     Route::get('storage/upload/{id}','AnnouncementController@upload');
     Route::get('storage/id/{id}','AnnouncementController@id');
     Route::get('storage/defaults/avatars/{id}','AnnouncementController@avatar');
+    // Route::get('storage/downloads/{id}','AnnouncementController@download');
+
 
 });
