@@ -70,9 +70,14 @@ class LoginController extends Controller
        }else{
 
          $user = new User;
-         $user->fname =  $userSocial->name;
-         $user->lname =  $userSocial->name;
+         $user->first_name =  $userSocial->name;
+         $user->other_names =  $userSocial->name;
          $user->email =  $userSocial->email;
+         $user->phone_number =  0 ;
+         $user->access_level =  0 ;
+         $user->status =  1 ;
+         $user->account_status =  1 ;
+         $user->slug =  str_slug($data['first_name']);
          $user->avatar =  $userSocial->avatar;
          $user->gender =  0 ;
          $user->remember_token =  $userSocial->token;
